@@ -13,7 +13,7 @@ router.get('/login', function(req, res, next) {
 // INPUT: { "user": "test" }
 // OUTPUT: {  }
 router.get('/api/login/salt', function(req, res, next) {
-  const saltQuery = "SELECT salt FROM users WHERE username='" + req.body.user + "'";
+  const saltQuery = "SELECT salt FROM users WHERE username='alex'";//req.body.user
   const results = [];
   const connectionString = "postgres://coursework_rw:StealthyChef@164.132.195.20:5432/coursework";
   pg.connect(connectionString, (err, client, done) => {
