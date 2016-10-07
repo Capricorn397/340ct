@@ -31,7 +31,7 @@ router.get('/api/login/salt', function(req, res, next) {
       console.log(err);
       return res.status(500).json({success: false, data: err});
     }
-    if (result.length === 0) {
+    if (result.rows.length === 0) {
       return res.json({success: false, data: "Invalid username provided."});
     } else {
       return res.json({salt: result.rows[0].salt});
