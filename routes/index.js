@@ -12,7 +12,7 @@ router.get('/login', function(req, res, next) {
 });
 // INPUT: { "user": "test" }
 // OUTPUT: {  }
-router.get('/api/login/salt', function(req, res, next) {
+router.post('/api/login/salt', function(req, res, next) {
   const saltQuery = "SELECT salt FROM users WHERE username='" + req.body.user + "'";
   const results = [];
   var pool = new Pool({
