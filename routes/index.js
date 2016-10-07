@@ -20,7 +20,7 @@ router.get('/api/login/salt', function(req, res, next) {
     if (err) {
       done();
       console.log(err);
-      return res.status(500), json({success: false, data: err});
+      return res.status(500).json({success: false, data: err});
     }
     const query = client.query(saltQuery);
     query.on('row', (row) => {
