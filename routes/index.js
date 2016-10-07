@@ -10,6 +10,11 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
+
+router.post('/api/echo', function (req, res) {
+  console.log(req.body);
+  res.send(req.body);
+});
 // INPUT: { "user": "test" }
 // OUTPUT: {  }
 router.post('/api/login/salt', function(req, res, next) {
