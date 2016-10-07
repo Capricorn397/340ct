@@ -8,4 +8,26 @@ block content
       input.input-block-level(type="password", name="password", placeholder="Password")
       label.checkbox.
         <input type="checkbox" value="remember-me" /> Remember me
-      button.btn.btn-large.btn-primary(type="submit") Sign in
+      button.btn.btn-large.btn-primary(onclick=getsalt(name)) Sign in
+      script(type="text/javascript")
+        function getsalt(u){
+          var pay = {
+            user: u
+          }
+          var dat = JSON.Stringify(pay.SerialiseArray())
+          var async = true
+          var options {
+            host: '164.132.195.20:3000',
+            path: '/api/login/salt',
+            method: 'POST'
+          }
+          $.post(
+              options, pay, function(data){
+              var salt = data
+              checkuser(u, password, salt)
+            }
+          )
+        }
+        function checkuser(u, p, s){
+          var payload
+        }
