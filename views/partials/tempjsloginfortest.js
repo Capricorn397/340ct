@@ -31,6 +31,7 @@ function checkuser(u, p, s){
     username: u,
     password: hashpass
   }
+  JSON.Stringify(payload.SerialiseArray())
   $.post(
     options, payload, function(data) {
 
