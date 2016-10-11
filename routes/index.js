@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Pool = require('pg').Pool;
+var login = require('./modules/login');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,32 +17,24 @@ router.post('/api/echo', function (req, res) {
   res.send(req.body);
 });
 // INPUT: { "user": "test" }
-// OUTPUT: {  }
+// OUTPUT: { "salt": "response" }
 router.post('/api/login/salt', function(req, res, next) {
-  const saltQuery = "SELECT salt FROM users WHERE username='" + req.body.user + "'";
-  const results = [];
-  var pool = new Pool({
-    user: "coursework_rw",
-    password: "StealthyChef",
-    host: "164.132.195.20",
-    database: "coursework",
-    max: 10,
-    idleTimeoutMillis: 1000
-  });
-  pool.on('error', function(e, client) {
-
-  });
-  pool.query(saltQuery, function(err, result) {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({success: false, data: err});
-    }
-    if (result.rows.length === 0) {
-      return res.json({success: false, data: "Invalid username provided."});
+  login.salt(req.body.user, function(response, error) {
+    if (error) {
+      res.status(500).json(response);
     } else {
-      return res.json({salt: result.rows[0].salt});
+      res.json(response);
     }
   });
+});
+
+router.post('/api/login/token', function(req, res, next) {
+  const verificationQuery = "SELECT user_id FROM users WHERE username='"
+                            + req.body.user + "' AND hashed_password = '"
+                            + req.body.password + "'";
+  const tokenQuery = "INSERT INTO login_token (user_id, token, expiry_time) \
+                      VALUES (" + userId + ", " + token +
+                      ", NOW() + interval \'15 minutes\')";
 });
 
 module.exports = router;
