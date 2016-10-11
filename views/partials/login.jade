@@ -19,13 +19,15 @@ block content
             path: '/api/login/salt',
             method: 'POST'
           };
-          $.post(options, pay, function(data) {checkuser(u, password, data);});
+          $.post(options, pay, function(data) {
+            checkuser(u, password, data);
+          });
         }
-        function checkuser(u, p, s){
+        /*function checkuser(u, p, s){
           var prepass = s + p;
           String.prototype.hashCode = function() {
-            var i, c, l;
-            if (this.length === 0) return hashCode;
+          var i, c, l;
+          if (this.length === 0) return hashCode;
             for (i = 0, l = this.length; i < l; i++){
               c = this.charCodeAt(i);
               var hashpass = ((hash << 5) - hash) + c;
@@ -40,4 +42,4 @@ block content
           $.post(options, payload, function(data) {
 
           });
-        }
+        }*/
