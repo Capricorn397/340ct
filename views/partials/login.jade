@@ -1,5 +1,4 @@
-§extends ../layout
-
+extends ../layout
 block content
   .container
     form.form-signin(action="/login", method="post")
@@ -8,45 +7,40 @@ block content
       input.input-block-level(id = "pass", type="password", name="password", placeholder="Password")
       label.checkbox.
         <input type="checkbox" value="remember-me" /> Remember me
-      button.btn.btn-large.btn-primary(onclick=getsalt(getelementbyid("text"), getelementbyid("password"))) Sign in
-      script(type="text/javascript")
-      function getsalt(u){
-        var pay = {
-          user: u
+      button.btn.btn-large.btn-primary(onclick="getsalt()") Sign in
+      script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+      script(type="text/javascript").
+        function getsalt() {
+          document.getElementById("text");
+          document.getElementById("password");
+          var pay = { user: u };
+          var dat = JSON.Stringify(pay.SerialiseArray());
+          var async = true;
+          var options = {
+            host: '164.132.195.20:3000/api/login/salt',
+            method: 'POST'
+          };
+          $.post(options, pay, function(data) {
+            checkuser(u, password, data);
+          });
         }
-        var dat = JSON.Stringify(pay.SerialiseArray())
-        var async = true
-        var options = {
-          host: '164.132.195.20:3000',
-          path: '/api/login/salt',
-          method: 'POST'
-        }
-        $.post(
-            options, pay, function(data){
-            var salt = data
-            checkuser(u, password, salt)
+        function checkuser(u, p, s){
+          var prepass = s + p;
+          String.prototype.hashCode = function() {
+          var i, c, l;
+          if (this.length === 0) return hashCode;
+            for (i = 0, l = this.length; i < l; i++){
+              c = this.charCodeAt(i);
+              var hashpass = ((hash << 5) - hash) + c;
+              hashpass |= 0;
+            }
           }
-        )
-      }
-      function checkuser(u, p, s){
-        var prepass = s + p
-        String.prototype.hashCode = function() {
-          var i, c, l
-          if (this.length === 0) return hashCode
-          for (i = 0, l = this.length; i < l; i++){
-            c = this.charCodeAt(i);
-            var hashpass = ((hash << 5) - hash) + c;
-            hashpass |= 0
+          var payload = {
+            username: u,
+            password: hashpass
           }
-        }
-        var payload = {
-          username: u,
-          password: hashpass
-        }
-        JSON.Stringify(payload.SerialiseArray())
-        $.post(
-          options, payload, function(data) {
+          JSON.Stringify(payload.SerialiseArray());
+          $.post(options, payload, function(data) {
 
-          }
-        )
-      }
+          });
+        }
