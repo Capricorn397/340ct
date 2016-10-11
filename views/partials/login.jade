@@ -10,7 +10,7 @@ block content
         <input type="checkbox" value="remember-me" /> Remember me
       button.btn.btn-large.btn-primary(onclick=getsalt(getelementbyid("text"), getelementbyid("password"))) Sign in
       script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
-        function getsalt(u) {
+        /*function getsalt(u) {
           var pay = { user: u };
           var dat = JSON.Stringify(pay.SerialiseArray());
           var async = true;
@@ -23,7 +23,7 @@ block content
             checkuser(u, password, data);
           });
         }
-        /*function checkuser(u, p, s){
+        function checkuser(u, p, s){
           var prepass = s + p;
           String.prototype.hashCode = function() {
           var i, c, l;
