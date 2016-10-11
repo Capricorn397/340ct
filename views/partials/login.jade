@@ -19,8 +19,7 @@ block content
           host: '164.132.195.20:3000',
           path: '/api/login/salt',
           method: 'POST'}
-        $.post(
-            options, pay, function(data){
+        $.post(options, pay, function(data){
             var salt = data
             checkuser(u, password, salt)
           }
