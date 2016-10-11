@@ -19,9 +19,7 @@ block content
             path: '/api/login/salt',
             method: 'POST'
           };
-          $.post(options, pay, function(data) {
-            checkuser(u, password, data);
-          });
+          $.post(options, pay, function(data) {checkuser(u, password, data);});
         }
         function checkuser(u, p, s){
           var prepass = s + p;
