@@ -21,10 +21,8 @@ block content
           method: 'POST'}
         $.post(options, pay, function(data){
             var salt = data
-            checkuser(u, password, salt)
+            checkuser(u, password, salt)})
           }
-        );
-      }
       function checkuser(u, p, s){
         var prepass = s + p
         String.prototype.hashCode = function() {
