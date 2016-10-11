@@ -1,16 +1,9 @@
 var Pool = require('pg').Pool;
+var logins = require('../constants');
 
 exports.salt = function(user, cb) {
   const saltQuery = "SELECT salt FROM users WHERE username='" + user + "'";
-  const results = [];
-  var pool = new Pool({
-    user: "coursework_rw",
-    password: "StealthyChef",
-    host: "164.132.195.20",
-    database: "coursework",
-    max: 10,
-    idleTimeoutMillis: 1000
-  });
+  var pool = new Pool(logins.dbInfo);
   pool.on('error', function(e, client) {
     console.log(e);
   });
@@ -25,4 +18,17 @@ exports.salt = function(user, cb) {
       cb({salt: result.rows[0].salt}, true);
     }
   });
+};
+
+exports.token = function(user, hashedPassword, cb) {
+  const verificationQuery = "SELECT user_id FROM users WHERE username='"
+                            + user + "' AND hashed_password = '"
+                            + hashedPassword + "'";
+  const tokenQuery = "INSERT INTO login_token (user_id, token, expiry_time) \
+                      VALUES (" + userId + ", " + token +
+                      ", NOW() + interval \'15 minutes\')";
+}
+
+function genToken(user) {
+
 }

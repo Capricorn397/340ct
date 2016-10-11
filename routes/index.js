@@ -29,12 +29,9 @@ router.post('/api/login/salt', function(req, res, next) {
 });
 
 router.post('/api/login/token', function(req, res, next) {
-  const verificationQuery = "SELECT user_id FROM users WHERE username='"
-                            + req.body.user + "' AND hashed_password = '"
-                            + req.body.password + "'";
-  const tokenQuery = "INSERT INTO login_token (user_id, token, expiry_time) \
-                      VALUES (" + userId + ", " + token +
-                      ", NOW() + interval \'15 minutes\')";
+  login.token(req.body.user, req.body.password, function(response, error) {
+
+  });
 });
 
 module.exports = router;
