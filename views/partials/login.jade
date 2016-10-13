@@ -16,7 +16,7 @@ block content
             const use = document.getElementById("user").value;
             const pass = document.getElementById("pass").value;
             var pay = {"user": use};
-            //JSON.stringify(pay);
+            pay = JSON.stringify(pay);
             console.log(pay);
             var async = true;
             let salt = $.ajax( {
