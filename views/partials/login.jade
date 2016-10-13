@@ -23,6 +23,7 @@ block content
               type: 'POST',
               url: "api/login/salt",
               data: pay,
+              dataType: "json",
               response: function(e){
                 console.log(e);
               },
@@ -31,7 +32,6 @@ block content
               },
               success: function(){
                 console.log("Done");
-                dataType: "json"
               }
             });
             return false;
