@@ -17,13 +17,18 @@ block content
           var dat = JSON.Stringify(pay.SerialiseArray());
           console.log(dat);
           var async = true;
-          let salt = Jquery.post( "164.132.195.20:3000/api/login/salt", dat, checkuser(data){
-            $('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-            $('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
-            alert(data);
-          }
-
-          , "json");
+          let salt = $.ajax( {
+            type: 'POST',
+            url: "164.132.195.20:3000/api/login/salt",
+            data: dat,
+            error: function() {$('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
+              $('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
+              alert(data);},
+            success: function(){
+              $('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
+              $('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
+              alert(data);
+            });
         };
         }
         //function checkuser(){
