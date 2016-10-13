@@ -18,7 +18,8 @@ block content
           var async = true;
           let salt = $.ajax( {
             type: 'POST',
-            url: "164.132.195.20:3000/api/login/salt",
+            url: "164.132.195.20:3000",
+            path: "api/login/salt"
             data: dat,
             error: function() {
               alert("Help");},
