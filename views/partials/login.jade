@@ -21,7 +21,7 @@ block content
             var async = true;
             let salt = $.ajax( {
               type: 'POST',
-              path: "api/login/salt",
+              url: "api/login/salt",
               data: pay,
               error: function() {
                 console.log("Help");
