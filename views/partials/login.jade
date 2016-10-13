@@ -23,6 +23,9 @@ block content
               type: 'POST',
               url: "api/login/salt",
               data: pay,
+              response: function(e){
+                console.log(e);
+              },
               error: function() {
                 console.log("Help");
               },
