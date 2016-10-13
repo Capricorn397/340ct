@@ -17,17 +17,12 @@ block content
           var dat = JSON.Stringify(pay.SerialiseArray());
           console.log(dat);
           var async = true;
-          $.ajax({type: "POST",
-           url: "164.132.195.20:3000/api/login/salt",
-           data: dat,
-           success: checkuser(data),
-           dataType: JSON} {
-            checkuser(u, password, data);
-          });
+          let salt = Jquery.get( "164.132.195.20:3000/api/login/salt", dat, checkuser(data), "json");
+          checkuser(u, password, salt);
         };
         }
-        function checkuser(data){
-          console.log(data)
+        function checkuser(user, pass, salt){
+          console.log(salt)
           /*var prepass = s + p;
           String.prototype.hashCode = function() {
           var i, c, l;
