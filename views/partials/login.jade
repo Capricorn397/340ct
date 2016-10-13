@@ -7,10 +7,31 @@ block content
       input.input-block-level(id = "pass", type="password", name="password", placeholder="Password")
       label.checkbox.
         <input type="checkbox" value="remember-me" /> Remember me
-      button.btn.btn-large.btn-primary(onclick="getsalt()") Sign in
+      button.btn.btn-large.btn-primary Sign in
       script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
       script(type="text/javascript").
-        function getsalt() {
+        $(document).ready(function() {
+          $('form').submit(function() {
+            const use = document.getElementById("user");
+            const pass = document.getElementById("password");
+            var pay = { user: use };
+            var dat = JSON.Stringify(pay.SerialiseArray());
+            var async = true;
+            let salt = $.ajax( {
+              type: 'POST',
+              url: "164.132.195.20:3000",
+              path: "api/login/salt"
+              data: dat,
+              error: function() {
+                alert("Help");},
+              success: function(){
+                alert("Done");
+              });
+              return false;
+            };
+          });
+        });
+      /*  function getsalt() {
           const use = document.getElementById("user");
           const pass = document.getElementById("password");
           var pay = { user: use };
