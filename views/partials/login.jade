@@ -15,8 +15,8 @@ block content
             event.preventDefault();
             const use = document.getElementById("#user");
             const pass = document.getElementById("#password");
-            var pay = { user: use };
-            JSON.Stringify(pay.SerialiseArray());
+            var pay = {user: use};
+            pay = JSON.Stringify(pay.SerialiseArray());
             console.log(dat);
             var async = true;
             let salt = $.ajax( {
