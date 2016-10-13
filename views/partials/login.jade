@@ -13,8 +13,8 @@ block content
         $(document).ready(function() {
           $('form').submit(function() {
             event.preventDefault();
-            const use = document.getElementById("#user");
-            const pass = document.getElementById("#password");
+            const use = document.getElementById("user").value;
+            const pass = document.getElementById("password").value;
             var pay = {user: use};
             JSON.stringify(pay);
             console.log(pay);
