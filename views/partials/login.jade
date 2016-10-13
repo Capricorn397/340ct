@@ -17,7 +17,11 @@ block content
           var dat = JSON.Stringify(pay.SerialiseArray());
           console.log(dat);
           var async = true;
-          $.ajax({type: "POST", url: "164.132.195.20:3000/api/login/salt", data: dat, success: checkuser(data), dataType: JSON} {
+          $.ajax({type: "POST",
+           url: "164.132.195.20:3000/api/login/salt",
+           data: dat,
+           success: checkuser(data),
+           dataType: JSON} {
             checkuser(u, password, data);
           });
         };
