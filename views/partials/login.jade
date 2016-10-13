@@ -12,6 +12,7 @@ block content
       script(type="text/javascript").
         $(document).ready(function() {
           $('form').submit(function() {
+            event.preventDefault();
             const use = document.getElementById("user");
             const pass = document.getElementById("password");
             var pay = { user: use };
