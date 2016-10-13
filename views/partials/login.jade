@@ -15,17 +15,17 @@ block content
           const pass = document.getElementById("password");
           var pay = { user: use };
           var dat = JSON.Stringify(pay.SerialiseArray());
-          console.log(dat);
           var async = true;
           let salt = $.ajax( {
             type: 'POST',
             url: "164.132.195.20:3000/api/login/salt",
             data: dat,
             error: function() {
-              alert(data);},
+              alert("Help");},
             success: function(){
-              alert(data);
+              alert("Done");
             });
+            return false;
         };
         }
         //function checkuser(){
