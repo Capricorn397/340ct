@@ -14,7 +14,7 @@ block content
           $('form').submit(function() {
             event.preventDefault();
             const use = document.getElementById("user").value;
-            const pass = document.getElementById("password").value;
+            const pass = document.getElementById("pass").value;
             var pay = {user: use};
             JSON.stringify(pay);
             console.log(pay);
