@@ -14,11 +14,13 @@ router.get('/login', function(req, res, next) {
 
 router.post('/api/echo', function (req, res) {
   console.log(req.body);
-  res.send(req.body);
+  res.json(req.body);
 });
+
 // INPUT: { "user": "test" }
 // OUTPUT: { "salt": "response" }
 router.post('/api/login/salt', function(req, res, next) {
+  console.log(req.body);
   login.salt(req.body.user, function(response, error) {
     if (error) {
       res.status(500).json(response);

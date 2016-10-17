@@ -10,12 +10,12 @@ exports.salt = function(user, cb) {
   pool.query(saltQuery, function(err, result) {
     if (err) {
       console.log(err);
-      cb({success: false, data: err}, false);
+      cb({success: false, data: err}, true);
     }
     if (result.rows.length === 0) {
-      cb({success: false, data: "Invalid username provided."}, true);
+      cb({success: false, data: "Invalid username provided."}, false);
     } else {
-      cb({salt: result.rows[0].salt}, true);
+      cb({salt: result.rows[0].salt}, false);
     }
   });
 };
