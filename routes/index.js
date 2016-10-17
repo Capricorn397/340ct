@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Pool = require('pg').Pool;
 var login = require('./modules/login');
+var register = require('./modules/register');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -34,6 +35,28 @@ router.post('/api/login/salt', function(req, res, next) {
 // OUTPUT: { "token": token }
 router.post('/api/login/token', function(req, res, next) {
   login.token(req.body.user, req.body.password, function(response, error) {
+    if (error) {
+      res.status(500).json(response);
+    } else {
+      res.json(response);
+    }
+  });
+});
+
+// INPUT: { "user": "test" }
+// OUTPUT: { "salt": "response" }
+router.post('/api/register/salt', function(req, res, next) {
+  register.salt(req.body.user, function(response, error) {
+    if (error) {
+      res.status(500).json(response);
+    } else {
+      res.json(response);
+    }
+  });
+});
+
+router.post('/api/register/user', function(req, res, next) {
+  register.finalise(req.body.user, req.body.hashed_password, req.body.firstname, req.body.surname, req.body.title, function(response, error) {
     if (error) {
       res.status(500).json(response);
     } else {
