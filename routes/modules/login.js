@@ -61,8 +61,8 @@ function genToken(userId, cb) {
   require('crypto').randomBytes(48, function(err, buffer) {
     var token = buffer.toString('hex');
     const tokenQuery = "INSERT INTO login_token (user_id, token, expiry_time) \
-                        VALUES (" + userId + ", " + token +
-                        ", NOW() + interval \'15 minutes\') RETURNING token";
+                        VALUES (" + userId + ", '" + token +
+                        "', NOW() + interval \'15 minutes\') RETURNING token";
     console.log(tokenQuery);
     var pool = new Pool(logins.dbInfo);
     pool.on('error', function(e, client) {
