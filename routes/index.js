@@ -30,9 +30,15 @@ router.post('/api/login/salt', function(req, res, next) {
   });
 });
 
+// INPUT: { "user": "test", "password": "hashed_password" }
+// OUTPUT: { "token": token }
 router.post('/api/login/token', function(req, res, next) {
   login.token(req.body.user, req.body.password, function(response, error) {
-
+    if (error) {
+      res.status(500).json(response);
+    } else {
+      res.json(response);
+    }
   });
 });
 
