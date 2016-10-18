@@ -4,7 +4,7 @@ function hashcode(hashCode) {
   for (i = 0, l = this.length; i < l; i++){
     c = this.charCodeAt(i);
     var hashpass = ((hash << 5) - hash) + c;
-    hashpass |= 0
+    //hashpass |= 0
   }
   return hash;
 };
