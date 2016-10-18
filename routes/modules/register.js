@@ -10,6 +10,7 @@ exports.salt = function(user, cb) {
         if (error) {
           cb({success: false, data: "Could not generate salt."}, true);
         } else {
+          console.log(salt);
           cb({"salt": salt}, false);
         }
       });
