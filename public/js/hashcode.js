@@ -1,4 +1,4 @@
-module.exports = function(hashCode) {
+function hashcode(hashCode) {
   var hash = 0, i, c, l
   if (this.length === 0) return hash
   for (i = 0, l = this.length; i < l; i++){
