@@ -16,10 +16,7 @@ block content
 						event.preventDefault();
 						const use = document.getElementById('user').value;
 						const pass = document.getElementById('pass').value;
-						console.log(use)
 						var pay = {user: use};
-						//pay = JSON.stringify(pay);
-						console.log(pay);
 						var async = true;
 						const salt = $.ajax( {
 							type: 'POST',
@@ -29,7 +26,6 @@ block content
 								console.log('Error sending or recieving user and salt');
 							},
 							success: function(){
-								console.log('Salt Returned');
 								hash();
 							}
 						});
@@ -41,7 +37,6 @@ block content
 								user: use,
 								password: hashedpassword
 							}
-							console.log(hashedpassword);
 							const token = $.ajax( {
 								type: 'POST',
 								url: 'api/login/token',
@@ -50,8 +45,10 @@ block content
 									console.log('Error sending or recieving token');
 								},
 								success: function(){
-									console.log('Token Recieved');
-									savetoken(token);
+								const lod = savetoken(token);
+									if (lod = true){
+										load('/')
+									}
 								}
 							});
 						}
@@ -59,7 +56,7 @@ block content
 							const cook = token.responseJSON.token;
 							console.log(cook);
 							document.cookie = use+'='+cook;
-
+							return true;
 						}
 						return false;
 					});
