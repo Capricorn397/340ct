@@ -26,7 +26,7 @@ block content
 							url: 'api/login/salt',
 							data: pay,
 							error: function() {
-								console.log('Help');
+								console.log('Error sending or recieving user and salt');
 							},
 							success: function(){
 								console.log('Salt Returned');
@@ -37,8 +37,26 @@ block content
 							const slt = salt.responseJSON.salt;
 							const sltpass = pass + slt;
 							const hashedpassword = hashcode(sltpass);
+							const tokesend = {
+								user: user: use,
+								password: hashedpassword
+							}
 							console.log(hashedpassword);
-
+							const toke = $.ajax(
+								type: 'POST',
+								url: 'api/login/token',
+								data: tokesend,
+								error: funtion() {
+									console.log('Error sending or recieving token');
+								},
+								success: function(){
+									console.log('Token Recieved');
+									savetoken();
+								}
+							)
+						}
+						function savetoken(toke){
+							console.log(toke);
 						}
 						return false;
 					});
