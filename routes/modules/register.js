@@ -89,7 +89,7 @@ function checkBlankPassword(user, cb) {
     if (result.rows.length === 0) {
       cb(false);
     } else {
-      cb(typeof result.rows[0].hashed_password === 'undefined');
+      cb(result.rows[0].hashed_password == '');
     }
   });
 }

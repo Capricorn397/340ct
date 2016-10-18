@@ -55,6 +55,16 @@ router.post('/api/register/salt', function(req, res, next) {
   });
 });
 
+/*INPUT:
+ * {
+ *    "user": "username",
+ *    "hashed_password": "hashed_password",
+ *    "firstname": "forename",
+ *    "surname": "surname",
+ *    "title", "Mr"
+ * }
+ */
+// OUTPUT: { "success": "true" }
 router.post('/api/register/user', function(req, res, next) {
   register.finalise(req.body.user, req.body.hashed_password, req.body.firstname, req.body.surname, req.body.title, function(response, error) {
     if (error) {
