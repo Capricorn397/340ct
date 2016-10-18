@@ -58,6 +58,8 @@ block content
 						function savetoken(token){
 							const cook = token.responseJSON.token;
 							console.log(cook);
+							document.cookie = cook, path=/;
+
 						}
 						return false;
 					});
