@@ -51,11 +51,11 @@ block content
 								},
 								success: function(){
 									console.log('Token Recieved');
-									savetoken();
+									savetoken(token);
 								}
 							});
 						}
-						function savetoken(){
+						function savetoken(token){
 							console.log(token);
 						}
 						return false;
