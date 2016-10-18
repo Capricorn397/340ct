@@ -17,7 +17,7 @@ exports.salt = function(user, cb) {
   });
 }
 
-exports.finalise(user, hashed_password, firstname, surname, title, cb) {
+exports.finalise = function(user, hashed_password, firstname, surname, title, cb) {
   checkBlankPassword(user, function(blank) {
     if (blank) {
       appendToUser(user, hashed_password, firstname, surname, title, function(success) {
