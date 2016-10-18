@@ -76,7 +76,7 @@ function genSalt(user, cb) {
 }
 
 function checkBlankPassword(user, cb) {
-  const query = "SELECT hashed_password FROM users WHERE username='" + user + "'";
+  const query = "SELECT hashed_password FROM users WHERE username='" + user + "' AND hashed_password=''";
   var pool = new Pool(logins.dbInfo);
   pool.on('error', function(e, client) {
     console.log(e);
@@ -89,7 +89,7 @@ function checkBlankPassword(user, cb) {
     if (result.rows.length === 0) {
       cb(false);
     } else {
-      cb(result.rows[0].hashed_password == '');
+      cb(true);
     }
   });
 }
