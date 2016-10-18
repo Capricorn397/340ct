@@ -95,7 +95,7 @@ function checkBlankPassword(user, cb) {
 }
 
 function appendToUser(user, hashed_password, firstname, surname, title, cb) {
-  const query = "UPDATE users SET hashed_password='" + hashed_password + "', firstname='" + firstname + "', surname='" + surname + "', title='" + title + "' WHERE username='" + user + "'";
+  const query = "UPDATE users SET hashed_password='" + hashed_password + "', forename='" + firstname + "', surname='" + surname + "', title='" + title + "' WHERE username='" + user + "'";
   var pool = new Pool(logins.dbInfo);
   pool.on('error', function(e, client) {
     console.log(e);
