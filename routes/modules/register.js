@@ -1,6 +1,7 @@
 var Pool = require('pg').Pool;
 var logins = require('../constants');
 
+// Initiate db connection pool
 var pool = new Pool(logins.dbInfo);
 pool.on('error', function(e, client) {
   console.log(e);
