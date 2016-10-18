@@ -17,10 +17,10 @@ block content
 						const pass = document.getElementById('pass').value;
 						console.log(use)
 						var pay = {user: use};
-						pay = JSON.stringify(pay);
+						//pay = JSON.stringify(pay);
 						console.log(pay);
 						var async = true;
-						let salt = $.ajax( {
+						const salt = $.ajax( {
 							type: 'POST',
 							url: 'api/login/salt',
 							data: pay,
