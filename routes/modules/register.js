@@ -10,7 +10,6 @@ exports.salt = function(user, cb) {
         if (error) {
           cb({success: false, data: "Could not generate salt."}, true);
         } else {
-          console.log(salt);
           cb({"salt": salt}, false);
         }
       });
@@ -69,7 +68,7 @@ function genSalt(user, cb) {
           console.log(err);
           cb(true); // Better to say it exists than have duplicates
         } else {
-          cb(false);
+          cb(false, salt);
         }
       });
     }
