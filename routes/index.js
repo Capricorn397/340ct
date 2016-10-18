@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var Pool = require('pg').Pool;
 var login = require('./modules/login');
 var register = require('./modules/register');
 
