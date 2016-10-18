@@ -1,5 +1,4 @@
 function hashcode(hashCode) {
-	console.log(hashCode);
   var hash = 0, i, c, l;
   if (hashCode.length === 0) return hash;
   for (i = 0, l = hashCode.length; i < l; i++){
