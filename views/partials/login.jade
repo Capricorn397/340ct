@@ -42,7 +42,7 @@ block content
 								password: hashedpassword
 							}
 							console.log(hashedpassword);
-							const toke = $.ajax( {
+							const token = $.ajax( {
 								type: 'POST',
 								url: 'api/login/token',
 								data: tokesend,
@@ -56,7 +56,7 @@ block content
 							});
 						}
 						function savetoken(){
-							console.log(toke);
+							console.log(token);
 						}
 						return false;
 					});
