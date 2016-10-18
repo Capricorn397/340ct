@@ -20,6 +20,9 @@ router.post('/api/echo', function (req, res) {
 
 // INPUT: { "user": "test" }
 // OUTPUT: { "salt": "response" }
+/**
+ * Endpoint to get the salt for a given user
+ */
 router.post('/api/login/salt', function(req, res, next) {
   console.log(req.body);
   login.salt(req.body.user, function(response, error) {
@@ -33,6 +36,9 @@ router.post('/api/login/salt', function(req, res, next) {
 
 // INPUT: { "user": "test", "password": "hashed_password" }
 // OUTPUT: { "token": token }
+/**
+ * Endpoint to generate a login token for a given user and set its expiry time.
+ */
 router.post('/api/login/token', function(req, res, next) {
   login.token(req.body.user, req.body.password, function(response, error) {
     if (error) {
@@ -45,6 +51,9 @@ router.post('/api/login/token', function(req, res, next) {
 
 // INPUT: { "user": "test" }
 // OUTPUT: { "salt": "response" }
+/**
+ * Endpoint to create a blank user with just a username and salt
+ */
 router.post('/api/register/salt', function(req, res, next) {
   register.salt(req.body.user, function(response, error) {
     if (error) {
@@ -65,6 +74,9 @@ router.post('/api/register/salt', function(req, res, next) {
  * }
  */
 // OUTPUT: { "success": "true" }
+/**
+ * Endpoint to finalise registration of a user (must have used /api/register/salt first)
+ */
 router.post('/api/register/user', function(req, res, next) {
   register.finalise(req.body.user, req.body.hashed_password, req.body.firstname, req.body.surname, req.body.title, function(response, error) {
     if (error) {
