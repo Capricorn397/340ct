@@ -76,7 +76,7 @@ function genSalt(user, cb) {
 }
 
 function checkBlankPassword(user, cb) {
-  const query = "SELECT hashed_password FROM users WHERE username='" + user + "' AND hashed_password=''";
+  const query = "SELECT hashed_password FROM users WHERE username='" + user + "' AND hashed_password IS NULL";
   var pool = new Pool(logins.dbInfo);
   pool.on('error', function(e, client) {
     console.log(e);
