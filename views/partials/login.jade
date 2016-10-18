@@ -31,9 +31,13 @@ block content
                 console.log("Help");
               },
               success: function(){
-                console.log("Done");
+                console.log("Salt Returned");
+								hash();
               }
             });
+						function hash(){
+							console.log(salt)
+						}
             return false;
           });
         });
