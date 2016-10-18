@@ -56,7 +56,8 @@ block content
 							});
 						}
 						function savetoken(token){
-							console.log(token);
+							const cook = token.responseJSON.token;
+							console.log(cook);
 						}
 						return false;
 					});
