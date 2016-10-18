@@ -53,7 +53,7 @@ function checkExists(user, cb) {
 }
 
 function genSalt(user, cb) {
-  require('crypto').randomBytes(48, function(err, buffer) {
+  require('crypto').randomBytes(16, function(err, buffer) {
     var salt = buffer.toString('hex');
     if (err) {
       cb(true);
