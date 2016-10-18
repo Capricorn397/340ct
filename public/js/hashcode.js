@@ -5,7 +5,6 @@ function hashcode(hashCode) {
   for (i = 0, l = this.length; i < l; i++){
     c = this.charCodeAt(i);
     hash = ((hash << 5) - hash) + c;
-    hash = hash & hash;
   }
   return hash;
 };
