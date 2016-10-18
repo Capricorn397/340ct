@@ -24,9 +24,6 @@ block content
 							type: 'POST',
 							url: 'api/login/salt',
 							data: pay,
-							response: function(e){
-								console.log(e);
-							},
 							error: function() {
 								console.log('Help');
 							},
@@ -36,8 +33,8 @@ block content
 							}
 						});
 						function hash(){
-							const stuff = salt
-							console.log(salt)
+							const stuff = JSON.parse(salt).salt;
+							console.log(stuff)
 						}
 						return false;
 					});
