@@ -12,6 +12,10 @@ router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
 
+router.get('/register', function(req, res, next) {
+	res.render('partials/register')
+})
+
 router.post('/api/echo', function (req, res) {
   console.log(req.body);
   res.json(req.body);
