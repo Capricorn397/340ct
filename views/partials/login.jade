@@ -54,7 +54,7 @@ block content
 						}
 						function savetoken(token){
 							const cook = token.responseJSON.token;
-							document.cookie = use+'='+cook;
+							document.cookie = 'token='+cook;
 							return true;
 						}
 						return false;
