@@ -21,11 +21,11 @@ block content
       div(data-role = 'fieldcontain')
         label(for='title') title
           select
-            option(selected) Mr
-            option Mrs
-            option Ms
-            option Miss
-            option Dr
+            option (value=Mr)
+            option (value=Mrs)
+            option (value=Ms)
+            option (value=Miss)
+            option (value=Dr)
       button.btn.btn-large.btn-primary(id='submit-btn') Register
       script(type='text/javascript' src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
       script(type='text/javascript' src = './js/hashcode.js')
@@ -35,10 +35,11 @@ block content
             console.log('hi');
             var use = document.getElementById('user').value;
             var pass = document.getElementById('pass').value;
-            var confirmPass = document.getElementById('confirmPass').value
+            var confirmPass = document.getElementById('confirmPass').value;
             var firstName = document.getElementById('firstname').value;
             var lastName = document.getElementById('surname').value;
-            var userTitle = $('#title').find(':selected').text();
+            var e = document.getElementById('title');
+            var userTitle = e.options[e.selectedIndex].value;
             var pay = { user: use };
             var async = true;
             console.log(JSON.stringify(pay));
