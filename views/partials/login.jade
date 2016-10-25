@@ -1,0 +1,62 @@
+extends ../layout
+block content
+	.container
+		form.form-signin
+			h2.form-signin-heading Please sign in
+			input.input-block-level(id = "user", type="text", name="username", placeholder="Email address")
+			input.input-block-level(id = "pass", type="password", name="password", placeholder="Password")
+			label.checkbox.
+			<input type="checkbox" value="remember-me" /> Remember me
+			button.btn.btn-large.btn-primary Sign in
+			script(type="text/javascript" src = "./js/hashcode.js")
+			script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+			script(type="text/javascript").
+				$(document).ready(function() {
+					$('form').submit(function() {
+						event.preventDefault();
+						const use = document.getElementById('user').value;
+						const pass = document.getElementById('pass').value;
+						var pay = {user: use};
+						var async = true;
+						const salt = $.ajax( {
+							type: 'POST',
+							url: 'api/login/salt',
+							data: pay,
+							error: function() {
+								console.log('Error sending or recieving user and salt');
+							},
+							success: function(){
+								hash();
+							}
+						});
+						function hash(){
+							const slt = salt.responseJSON.salt;
+							const sltpass = pass + slt;
+							const hashedpassword = hashcode(sltpass);
+							const tokesend = {
+								user: use,
+								password: hashedpassword
+							}
+							const token = $.ajax( {
+								type: 'POST',
+								url: 'api/login/token',
+								data: tokesend,
+								error: function() {
+									console.log('Error sending or recieving token');
+								},
+								success: function(){
+								const lod = savetoken(token);
+									if (lod === true){
+										window.location = '/';
+									}
+								}
+							});
+						}
+						function savetoken(token){
+							const cook = token.responseJSON.token;
+							document.cookie = use+'='+cook;
+							return true;
+						}
+						return false;
+					});
+				});
