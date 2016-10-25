@@ -61,7 +61,8 @@ block content
           });
           function addData(email, password, name, surname, title, salt) {
             console.log(salt);
-            var hashedPass = hashcode(salt);
+						var sltpass = password + salt;
+            var hashedPass = hashcode(sltpass);
             var newUser = {
               'user': email,
               'hashed_password': hashedPass,
