@@ -1,4 +1,5 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var router = express.Router();
 var login = require('./modules/login');
 var register = require('./modules/register');
@@ -11,6 +12,10 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
+
+router.get('/myToken', function(req, res, next) {
+	res.json({'token': req.cookies.token })
+})
 
 // INPUT: Anything
 // OUTPUT: Anything
