@@ -12,6 +12,8 @@ router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
 
+// INPUT: Anything
+// OUTPUT: Anything
 router.post('/api/echo', function (req, res) {
   console.log(req.body);
   res.json(req.body);
