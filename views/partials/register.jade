@@ -44,8 +44,7 @@ block content
             console.log(JSON.stringify(pay));
             var salt = $.ajax({
               type: 'POST',
-              url: '164.132.195.20:3000',
-              path: 'api/register/salt',
+              url: 'api/register/salt',
               data: pay,
               error: function(e) {
                 console.log(e);
@@ -73,8 +72,7 @@ block content
             console.log(JSON.stringify(newUser));
             var registerUser = $.ajax({
               type: 'POST',
-              url: '164.132.195.20:3000',
-              path: 'api/register/user',
+              url: 'api/register/user',
               data: newUser,
               error: function() {
                 console.log('help');
