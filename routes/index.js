@@ -88,7 +88,6 @@ router.post('/api/register/user', function(req, res, next) {
       res.json(response);
     }
   });
->>>>>>> 17bab7c236389443e91ee0631fce6321f0b41fa7
 });
 
 module.exports = router;
