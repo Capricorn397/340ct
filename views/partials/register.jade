@@ -19,14 +19,13 @@ block content
         label(for='surname') surname
           input.input-block-level(id = 'surname', type='text' name='surname', placeholder='Last Name')
       div(data-role = 'fieldcontain')
-        form
-          label(for='title') title
-            select
-              option(value=Mr) Mr
-              option(value=Mrs) Mrs
-              option(value=Ms) Ms 
-              option(value=Miss) Miss
-              option(value=Dr) Dr
+        label(for='title') title
+          select(id='titleSelect')
+            option(value="Mr") Mr
+            option(value="Mrs") Mrs
+            option(value="Ms") Ms 
+            option(value="Miss") Miss
+            option(value="Dr") Dr
       button.btn.btn-large.btn-primary(id='submit-btn') Register
       script(type='text/javascript' src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
       script(type='text/javascript' src = './js/hashcode.js')
@@ -39,7 +38,7 @@ block content
             var confirmPass = document.getElementById('confirmPass').value
             var firstName = document.getElementById('firstname').value;
             var lastName = document.getElementById('surname').value;
-            var userTitle = document.getElementById('title').value;
+            var userTitle = $('#titleSelect').val();
             var pay = { user: use };
             var async = true;
             console.log(JSON.stringify(pay));
