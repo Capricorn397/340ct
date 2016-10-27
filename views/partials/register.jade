@@ -60,7 +60,8 @@ block content
             });
           });
           function addData(email, password, name, surname, title, salt) {
-            var sltpass = password + salt;
+            const slt = salt.responseJSON.salt;
+            var sltpass = password + slt;
             var hashedPass = hashcode(sltpass);
             var newUser = {
               'user': email,
