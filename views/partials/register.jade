@@ -38,8 +38,7 @@ block content
             var confirmPass = document.getElementById('confirmPass').value
             var firstName = document.getElementById('firstname').value;
             var lastName = document.getElementById('surname').value;
-            var e = document.getElementById('title');
-            var userTitle = e.options[e.selectedIndex].value;
+            var userTitle = document.getElementById('title').value;
             var pay = { user: use };
             var async = true;
             console.log(JSON.stringify(pay));
