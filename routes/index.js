@@ -1,7 +1,9 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var router = express.Router();
 var login = require('./modules/login');
 var register = require('./modules/register');
+var auth = require('./modules/auth')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +18,12 @@ router.get('/register', function(req, res, next) {
 	res.render('partials/register')
 })
 
+router.get('/myToken', function(req, res, next) {
+	res.json({'token': req.cookies.token })
+})
+
+// INPUT: Anything
+// OUTPUT: Anything
 router.post('/api/echo', function (req, res) {
   console.log(req.body);
   res.json(req.body);
