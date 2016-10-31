@@ -14,8 +14,11 @@ router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
 
-router.get('/myToken', function(req, res, next) {
+router.get('/register', function(req, res, next) {
+	res.render('partials/register')
+})
 
+router.get('/myToken', function(req, res, next) {
 	res.json({'token': req.cookies.token })
 })
 
@@ -48,6 +51,7 @@ router.post('/api/login/salt', function(req, res, next) {
  * Endpoint to generate a login token for a given user and set its expiry time.
  */
 router.post('/api/login/token', function(req, res, next) {
+  console.log(req.body);
   login.token(req.body.user, req.body.password, function(response, error) {
     if (error) {
       res.status(500).json(response);

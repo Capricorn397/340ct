@@ -1,0 +1,86 @@
+extends ../layout
+block content
+  .container
+    form.form-register(action='/register', method='post')
+    h2.form-signin-heading Enter new user details
+      div(data-role = 'fieldcontain')
+        label(for='email') email
+          input.input-block-level(id = 'user', type='text', name='username', placeholder='Email address')
+      div(data-role = 'fieldcontain')
+        label(for='password') password
+          input.input-block-level(id = 'pass', type='password', name='password', placeholder='Password')
+      div(data-role = 'fieldcontain')
+        label(for='confirmpassword') confirmpassword
+          input.input-block-level(id = 'confirmPass', type='password', name='password', placeholder='Password')
+      div(data-role = 'fieldcontain')
+        label(for='firstname') firstname
+          input.input-block-level(id = 'firstname', type='text' name='firstname', placeholder='First Name')
+      div(data-role = 'fieldcontain')
+        label(for='surname') surname
+          input.input-block-level(id = 'surname', type='text' name='surname', placeholder='Last Name')
+      div(data-role = 'fieldcontain')
+        label(for='title') title
+          select(id='titleSelect')
+            option(value="Mr") Mr
+            option(value="Mrs") Mrs
+            option(value="Ms") Ms 
+            option(value="Miss") Miss
+            option(value="Dr") Dr
+      button.btn.btn-large.btn-primary(id='submit-btn') Register
+      script(type='text/javascript' src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+      script(type='text/javascript' src = './js/hashcode.js')
+      script(type='text/javascript').
+        $(document).ready(function() {
+          $('#submit-btn').click(function() {
+            console.log('hi');
+            var use = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value;
+            var confirmPass = document.getElementById('confirmPass').value
+            var firstName = document.getElementById('firstname').value;
+            var lastName = document.getElementById('surname').value;
+            var userTitle = $('#titleSelect').val();
+            var pay = { user: use };
+            var async = true;
+            console.log(JSON.stringify(pay));
+            var salt = $.ajax({
+              type: 'POST',
+              url: 'api/register/salt',
+              data: pay,
+              error: function(e) {
+                console.log(e);
+              },
+              success: function() {
+                console.log('yay');
+                if (pass == confirmPass) {
+                  addData(use, pass, firstName, lastName, userTitle, salt)
+                } else {
+                  alert('Passwords do not match');
+                }
+              }
+            });
+          });
+          function addData(email, password, name, surname, title, salt) {
+            const slt = salt.responseJSON.salt;
+            var sltpass = password + slt;
+            var hashedPass = hashcode(sltpass);
+            var newUser = {
+              'user': email,
+              'hashed_password': hashedPass,
+              'firstname': name,
+              'surname': surname,
+              'title': title
+            };
+            console.log(JSON.stringify(newUser));
+            var registerUser = $.ajax({
+              type: 'POST',
+              url: 'api/register/user',
+              data: newUser,
+              error: function() {
+                console.log('help');
+              },
+              success: function() {
+                console.log('yay');
+              }
+            })
+          };
+        })
