@@ -1,0 +1,20 @@
+html
+  head
+    title= title
+    link(rel="stylesheet" type="text/css" href="./style.css")
+  
+div
+    h1 Coventry University ECS
+    h2 Student Homepage
+    p Your modules and assignments are below.
+    a(name="Home" href="./studenthome.pug")
+    a(name= "My Modules" href="./studentmodules.pug")
+    a(name="My Assignments" href="./studentassignments.pug")
+    a(name="My Submissions" href="./studentsubmissions.pug")
+    
+    div My Modules
+    ul
+      li: Software Engineering
+      li: Computer Science
+    div My Assignments
+    
