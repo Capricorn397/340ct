@@ -28,6 +28,7 @@ exports.addModule = function(token, data){
 		console.log(err)
 	})
 }
+
 exports.viewModule = function(token, data){
 	const databaseQuery = `SELECT name, tutor_id, description FROM module WHERE name='${data.name}'`
 	Pool.query(databaseQuery, function(response, err){
