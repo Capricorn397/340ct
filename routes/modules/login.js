@@ -88,7 +88,7 @@ const genToken = (userId) =>
 	      if (result.rows.length === 0) {
 	        reject('Error inserting row.')
 	      } else {
-	        resolve(false, result.rows[0].token)
+	        resolve(result.rows[0].token)
 	      }
 	    })
 	  })
