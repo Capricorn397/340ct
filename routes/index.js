@@ -114,7 +114,7 @@ router.post('/api/module/add', function(req, res, next) {
 	})
 })
 
-router.post('api/module/add', function(req, res, next) {
+router.post('/api/module/add', function(req, res, next) {
 	modules.addModule(req.cookies.token ,req.body, function(response, error) {
 		if (error) {
 			res.status(500).json(response)
