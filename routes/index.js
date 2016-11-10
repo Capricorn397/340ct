@@ -4,7 +4,7 @@ var router = express.Router();
 var login = require('./modules/login');
 var register = require('./modules/register');
 var auth = require('./modules/auth')
-
+var modules = require('./modules/moduleOptions');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -101,4 +101,13 @@ router.post('/api/register/user', function(req, res, next) {
   });
 });
 
+router.post('api/module/add', function(req, res, next) {
+	modules.addModule(req.cookies.token ,req.body, function(response, error) {
+		if (error) {
+			res.status(500).json(response)
+		} else {
+			res.json(response)
+		}
+	})
+})
 module.exports = router;
