@@ -18,7 +18,7 @@ block content
 						var pay = {modName: name, modId: id, ModDesc: desc};
 						$.ajax({
 							type: 'POST',
-							url: 'modules/add',
+							url: 'api/module/add',
 							data: pay,
 							error: function(){
 								console.log(err);

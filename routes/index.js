@@ -5,7 +5,7 @@ const router = express.Router()
 const login = require('./modules/login')
 const register = require('./modules/register')
 const coursework = require('./modules/coursework')
-
+const modules = require('./modules/moduleOptions');
 
 const serverErrorCode = 500
 
@@ -103,4 +103,14 @@ router.post('/api/coursework', (req, res) => {
 	})
 })
 
-module.exports = router
+router.post('api/module/add', function(req, res, next) {
+	modules.addModule(req.cookies.token ,req.body, function(response, error) {
+		if (error) {
+			res.status(500).json(response)
+		} else {
+			res.json(response)
+		}
+	})
+})
+
+module.exports = router;
