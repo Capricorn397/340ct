@@ -22,7 +22,7 @@ router.get('/myToken', function(req, res, next) {
 	res.json({'token': req.cookies.token })
 })
 router.get('/modules/add', function(req, res, next) {
-	res.render('partials/addmodule')
+	res.render('partials/addModule')
 })
 // INPUT: Anything
 // OUTPUT: Anything
