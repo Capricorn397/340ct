@@ -21,7 +21,9 @@ router.get('/register', function(req, res, next) {
 router.get('/myToken', function(req, res, next) {
 	res.json({'token': req.cookies.token })
 })
-
+router.post('/modules/add', function(req, res, next) {
+	res.render('partials/addmodule')
+})
 // INPUT: Anything
 // OUTPUT: Anything
 router.post('/api/echo', function (req, res) {
