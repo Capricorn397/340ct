@@ -15,7 +15,7 @@ exports.addModule = function(token, data){
 	auth.token(token).then((user) => {
 		if (user.rights >= adminRights){
 			const databaseQuery = `INSERT INTO module (name, tutor_id, description) \
-														VALUES ('${data.moduleName}', ${data.tutorId}, '${data.moduleDescription}')`
+														VALUES ('${data.moduleName}', ${user.id}, '${data.moduleDescription}')`
 			Pool.query(databaseQuery, function(err){
 				if (err){
 					return err
