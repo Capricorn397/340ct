@@ -25,6 +25,7 @@ router.get('/register', function(req, res) {
 router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
 })
+
 router.get('/modules/add', function(req, res, next) {
 	res.render('partials/addModule')
 })
