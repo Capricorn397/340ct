@@ -33,6 +33,10 @@ exports.salt = (user) =>
 
 /**
  * Returns a generated token for a given user/password
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The hashed password of the user
+ * @returns {Object} - The token in an object form
+ * @author Alex
  */
 exports.token = (user, hashedPassword) =>
 	new Promise((resolve, reject) => {
@@ -47,6 +51,10 @@ exports.token = (user, hashedPassword) =>
 
 /**
  * Verifies correct password for a user
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The hashed password of the user
+ * @returns {int} - The userId of the user assuming the password is correct
+ * @author Alex
  */
 const verifyUser = (user, hashedPassword) =>
 	new Promise((resolve, reject) => {
@@ -68,6 +76,9 @@ const verifyUser = (user, hashedPassword) =>
 
 /**
  * Generates a login token
+ * @param {int} userId - The id of the user you are generating a token for
+ * @returns {String} - The token generated
+ * @author Alex
  */
 const genToken = (userId) =>
 	new Promise((resolve, reject) => {

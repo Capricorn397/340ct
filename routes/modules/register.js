@@ -11,6 +11,9 @@ pool.on('error', function(e) {
 
 /**
  * Registers a new user with just username and salt, then returns the salt
+ * @param {String} user - The username of the user to generate a skeleton for
+ * @returns {Object} - The salt in an object
+ * @author Alex
  */
 exports.salt = (user) =>
 	new Promise((resolve, reject) => {
@@ -27,11 +30,18 @@ exports.salt = (user) =>
 
 /**
  * Fills in the blank data for a given user.
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The password of the user
+ * @param {String} firstname - The first name of the user
+ * @param {String} surname - The last name of the user
+ * @param {String} title - The title of the user
+ * @returns {Object} - The status of the request
+ * @author Alex
  */
-exports.finalise = (user, hashed_password, firstname, surname, title) =>
+exports.finalise = (user, hashedPassword, firstname, surname, title) =>
 	new Promise((resolve, reject) => {
 		checkBlankPassword(user).then(() => {
-			appendToUser(user, hashed_password, firstname, surname, title).then(() => {
+			appendToUser(user, hashedPassword, firstname, surname, title).then(() => {
 				resolve({success: true})
 			}).catch(() => {
 				reject('Unable to update user record')
@@ -43,6 +53,9 @@ exports.finalise = (user, hashed_password, firstname, surname, title) =>
 
 /**
  * Checks if a user already exists
+ * @param {String} user - The username of the user
+ * @returns {boolean} - resolves if exists, rejects if not
+ * @author Alex
  */
 const checkExists = (user) =>
 	new Promise((resolve, reject) => {
@@ -62,6 +75,9 @@ const checkExists = (user) =>
 
 /**
  * Generates a new salt.
+ * @param {String} user - The username of the user
+ * @returns {String} - The salt returned
+ * @author Alex
  */
 const genSalt = (user) =>
 	new Promise((resolve, reject) => {
@@ -86,6 +102,9 @@ const genSalt = (user) =>
 
 /**
  * Verify a user has no password
+ * @param {String} user - The username of the user
+ * @returns {boolean} - resolves if user has blank password, otherwise reject
+ * @author Alex
  */
 const checkBlankPassword = (user) =>
 	new Promise((resolve, reject) => {
@@ -105,10 +124,17 @@ const checkBlankPassword = (user) =>
 
 /**
  * Adds new data to a user
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The hashed password of the user
+ * @param {String} firstname - The first name of the user
+ * @param {String} surname - The last name of the user
+ * @param {String} title - The title of the user
+ * @returns {boolean} - Resolve if succesful, otherwise reject
+ * @author Alex
  */
-const appendToUser = (user, hashed_password, firstname, surname, title) =>
+const appendToUser = (user, hashedPassword, firstname, surname, title) =>
 	new Promise((resolve, reject) => {
-	  const query = `UPDATE users SET hashed_password='${hashed_password}', forename='${firstname}', surname='${surname}', title='${title}' WHERE username='${user}'`
+	  const query = `UPDATE users SET hashed_password='${hashedPassword}', forename='${firstname}', surname='${surname}', title='${title}' WHERE username='${user}'`
 	  pool.query(query, function(err) {
 	    if (err) {
 	      console.log(err)
