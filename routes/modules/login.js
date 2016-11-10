@@ -78,7 +78,7 @@ const genToken = (userId) =>
 			}
 	    const token = buffer.toString('hex')
 	    const tokenQuery = `INSERT INTO login_token (user_id, token, expiry_time) \
-	                        VALUES ("${userId}, '${token}', NOW() + interval '15 minutes') \
+	                        VALUES (${userId}, '${token}', NOW() + interval '15 minutes') \
 													RETURNING token`
 	    pool.query(tokenQuery, function(err, result) {
 	      if (err) {
