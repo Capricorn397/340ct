@@ -1,119 +1,146 @@
-var Pool = require('pg').Pool;
-var logins = require('../constants');
+'use strict'
 
-// Initiate db connection pool
-var pool = new Pool(logins.dbInfo);
-pool.on('error', function(e, client) {
-  console.log(e);
-});
+const Pool = require('pg').Pool
+const logins = require('../constants')
+const crypto = require('crypto')
+
+const pool = new Pool(logins.dbInfo)
+pool.on('error', function(e) {
+	console.log(e)
+})
 
 /**
  * Registers a new user with just username and salt, then returns the salt
+ * @param {String} user - The username of the user to generate a skeleton for
+ * @returns {Object} - The salt in an object
+ * @author Alex
  */
-exports.salt = function(user, cb) {
-  checkExists(user, function(exists) {
-    if (exists) {
-      cb({success: false, data: "User already exists. Cannot recreate salt."}, true);
-    } else {
-      genSalt(user, function(error, salt) {
-        if (error) {
-          cb({success: false, data: "Could not generate salt."}, true);
-        } else {
-          cb({"salt": salt}, false);
-        }
-      });
-    }
-  });
-}
+exports.salt = (user) =>
+	new Promise((resolve, reject) => {
+		checkExists(user).then(() => {
+			genSalt(user).then((salt) => {
+				resolve({'salt': salt})
+			}).catch(() => {
+				reject({success: false, data: 'Could not generate salt.'})
+			})
+		}).catch(() => {
+			reject({success: false, data: 'User already exists. Cannot recreate salt.'})
+		})
+	})
 
 /**
  * Fills in the blank data for a given user.
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The password of the user
+ * @param {String} firstname - The first name of the user
+ * @param {String} surname - The last name of the user
+ * @param {String} title - The title of the user
+ * @returns {Object} - The status of the request
+ * @author Alex
  */
-exports.finalise = function(user, hashed_password, firstname, surname, title, cb) {
-  checkBlankPassword(user, function(blank) {
-    if (blank) {
-      appendToUser(user, hashed_password, firstname, surname, title, function(success) {
-        if (success) {
-          cb({success: true}, false);
-        } else {
-          cb({success: false, data: "Unable to update user record."}, true);
-        }
-      });
-    } else {
-      cb({success: false, data: "User already registered. Don't try and re-register."}, true);
-    }
-  });
-}
+exports.finalise = (user, hashedPassword, firstname, surname, title) =>
+	new Promise((resolve, reject) => {
+		checkBlankPassword(user).then(() => {
+			appendToUser(user, hashedPassword, firstname, surname, title).then(() => {
+				resolve({success: true})
+			}).catch(() => {
+				reject('Unable to update user record')
+			})
+		}).catch(() => {
+			  reject('User already registered. Don\'t try and re-register.')
+		})
+	})
 
 /**
  * Checks if a user already exists
+ * @param {String} user - The username of the user
+ * @returns {boolean} - resolves if exists, rejects if not
+ * @author Alex
  */
-function checkExists(user, cb) {
-  const query = "SELECT user_id FROM users WHERE username='" + user + "'";
-  pool.query(query, function(err, result) {
-    if (err) {
-      console.log(err);
-      cb(true); // Better to say it exists than have duplicates
-    }
-    if (result.rows.length === 0) {
-      cb(false);
-    } else {
-      cb(true);
-    }
-  });
-}
+const checkExists = (user) =>
+	new Promise((resolve, reject) => {
+		const query = `SELECT user_id FROM users WHERE username='${user}'`
+		pool.query(query, function(err, result) {
+			if (err) {
+				console.log(err)
+				resolve()
+			}
+			if (result.rows.length === 0) {
+				reject()
+			} else {
+				resolve()
+			}
+		})
+	})
 
 /**
  * Generates a new salt.
+ * @param {String} user - The username of the user
+ * @returns {String} - The salt returned
+ * @author Alex
  */
-function genSalt(user, cb) {
-  require('crypto').randomBytes(16, function(err, buffer) {
-    var salt = buffer.toString('hex');
-    if (err) {
-      cb(true);
-    } else {
-      const query = "INSERT INTO users (username, salt) VALUES ('" + user + "', '" + salt + "')";
-      pool.query(query, function(err, result) {
-        if (err) {
-          console.log(err);
-          cb(true); // Better to say it exists than have duplicates
-        } else {
-          cb(false, salt);
-        }
-      });
-    }
-  });
-}
+const genSalt = (user) =>
+	new Promise((resolve, reject) => {
+		const saltLength = 16
+	  crypto.randomBytes(saltLength, function(err, buffer) {
+	    const salt = buffer.toString('hex')
+	    if (err) {
+	      reject(err)
+	    } else {
+	      const query = `INSERT INTO users (username, salt) VALUES ('${user}', '${salt}')`
+	      pool.query(query, function(err) {
+	        if (err) {
+	          console.log(err)
+	          reject(err) // Better to say it exists than have duplicates
+	        } else {
+	          resolve(salt)
+	        }
+	      })
+	    }
+	  })
+	})
 
 /**
  * Verify a user has no password
+ * @param {String} user - The username of the user
+ * @returns {boolean} - resolves if user has blank password, otherwise reject
+ * @author Alex
  */
-function checkBlankPassword(user, cb) {
-  const query = "SELECT hashed_password FROM users WHERE username='" + user + "' AND hashed_password IS NULL";
-  pool.query(query, function(err, result) {
-    if (err) {
-      console.log(err);
-      cb(false); // Better to say it exists than have duplicates
-    }
-    if (result.rows.length === 0) {
-      cb(false);
-    } else {
-      cb(true);
-    }
-  });
-}
+const checkBlankPassword = (user) =>
+	new Promise((resolve, reject) => {
+	  const query = `SELECT hashed_password FROM users WHERE username='${user}' AND hashed_password IS NULL`
+	  pool.query(query, function(err, result) {
+	    if (err) {
+	      console.log(err)
+	      reject() // Better to say it exists than have duplicates
+	    }
+	    if (result.rows.length === 0) {
+	      reject()
+	    } else {
+	      resolve()
+	    }
+	  })
+	})
 
 /**
  * Adds new data to a user
+ * @param {String} user - The username of the user
+ * @param {String} hashedPassword - The hashed password of the user
+ * @param {String} firstname - The first name of the user
+ * @param {String} surname - The last name of the user
+ * @param {String} title - The title of the user
+ * @returns {boolean} - Resolve if succesful, otherwise reject
+ * @author Alex
  */
-function appendToUser(user, hashed_password, firstname, surname, title, cb) {
-  const query = "UPDATE users SET hashed_password='" + hashed_password + "', forename='" + firstname + "', surname='" + surname + "', title='" + title + "' WHERE username='" + user + "'";
-  pool.query(query, function(err) {
-    if (err) {
-      console.log(err);
-      cb(false);
-    } else {
-      cb(true);
-    }
-  });
-}
+const appendToUser = (user, hashedPassword, firstname, surname, title) =>
+	new Promise((resolve, reject) => {
+	  const query = `UPDATE users SET hashed_password='${hashedPassword}', forename='${firstname}', surname='${surname}', title='${title}' WHERE username='${user}'`
+	  pool.query(query, function(err) {
+	    if (err) {
+	      console.log(err)
+	      reject()
+	    } else {
+	      resolve()
+	    }
+	  })
+	})
