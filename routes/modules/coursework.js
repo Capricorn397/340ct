@@ -20,8 +20,6 @@ exports.setCoursework = (token, module, title, description, dueDate, isGroup, we
 		}).catch((err) => {
 			reject(err)
 		})
-	}).catch((err) => {
-		console.log(err)
 	})
 
 const canMake = (token, module) =>
