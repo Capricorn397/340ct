@@ -64,6 +64,8 @@ const assignCoursework = (studentId, module, title, description, dueDate, isGrou
 					resolve(result.rows[0].coursework_id)
 				}
 			})
+		}).catch((err) => {
+			reject(err)
 		})
 	})
 
