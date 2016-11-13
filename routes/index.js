@@ -1,35 +1,37 @@
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var router = express.Router();
-var login = require('./modules/login');
-var register = require('./modules/register');
-var auth = require('./modules/auth')
+'use strict'
+
+const express = require('express')
+const router = express.Router()
+const login = require('./modules/login')
+const register = require('./modules/register')
+const coursework = require('./modules/coursework')
+
 
 const serverErrorCode = 500
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', function(req, res) {
+	res.render('index', { title: 'Express' })
+})
 
-router.get('/login', function(req, res, next) {
-  res.render('partials/login');
-});
+router.get('/login', function(req, res) {
+	res.render('partials/login')
+})
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function(req, res) {
 	res.render('partials/register')
 })
 
-router.get('/myToken', function(req, res, next) {
+router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
 })
 
 // INPUT: Anything
 // OUTPUT: Anything
-router.post('/api/echo', function (req, res) {
-  console.log(req.body);
-  res.json(req.body);
-});
+router.post('/api/echo', function(req, res) {
+	console.log(req.body)
+	res.json(req.body)
+})
 
 // INPUT: { "user": "test" }
 // OUTPUT: { "salt": "response" }
@@ -72,11 +74,11 @@ router.post('/api/register/salt', function(req, res) {
 
 /*INPUT:
  * {
- *    "user": "username",
- *    "hashed_password": "hashed_password",
- *    "firstname": "forename",
- *    "surname": "surname",
- *    "title", "Mr"
+ *		"user": "username",
+ *		"hashed_password": "hashed_password",
+ *		"firstname": "forename",
+ *		"surname": "surname",
+ *		"title", "Mr"
  * }
  */
 // OUTPUT: { "success": "true" }
@@ -88,6 +90,14 @@ router.post('/api/register/user', function(req, res) {
 		res.json(response)
 	}).catch((response) => {
 		res.status(serverErrorCode).json(response)
+	})
+})
+
+router.post('/api/coursework', (req, res) => {
+	coursework.setCoursework(req.cookies.token, req.body.module, req.body.title, req.body.description, req.body.dueDate, req.body.isGroup, req.body.weighting, req.body.maxMark).then((courseworkId) => {
+		res.json({'success': true, 'created_id': courseworkId})
+	}).catch((err) => {
+		res.status(serverErrorCode).json({'success': false, 'data': err})
 	})
 })
 
