@@ -30,6 +30,8 @@ const canMake = (token, module) =>
 			}).catch((err) => {
 				reject(err)
 			})
+		}).catch((err) => {
+			reject(err)
 		})
 	})
 
