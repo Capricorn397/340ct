@@ -72,6 +72,7 @@ const assignCoursework = (studentId, module, title, description, dueDate, isGrou
 const getModuleId = (module) =>
 	new Promise((resolve, reject) => {
 		const query = `SELECT module_id FROM module WHERE name='${module}'`
+		console.log(query)
 		pool.query(query, (err, result) => {
 			if (err) {
 				reject(err)
