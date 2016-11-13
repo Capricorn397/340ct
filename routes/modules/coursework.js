@@ -53,7 +53,7 @@ const checkLeader = (module, user) =>
 		})
 	})
 
-const assignCoursework = (studentId, module, title, description, dueDate, isGroup, weighting, maxMark) =>
+const assignCoursework = (module, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		getModuleId(module).then((moduleId) => {
 			const query = `INSERT INTO coursework(module_id, title, description, due_date, is_group, weighting, maxMark) VALUES (${moduleId}, '${title}', '${description}', '${dueDate}', ${isGroup}, ${weighting}, ${maxMark}) RETURNING coursework_id`
