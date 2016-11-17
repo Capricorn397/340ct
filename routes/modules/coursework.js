@@ -9,6 +9,19 @@ pool.on('error', function(e) {
 	console.log(e)
 })
 
+/**
+ * Sets coursework for a given module
+ * @param {String} token - The authentication token for the user trying to set the coursework
+ * @param {String} module - The case sensitive name of the module
+ * @param {String} title - The title of the coursework
+ * @param {String} description - The description of the coursework
+ * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
+ * @param {boolean} isGroup - Whether the project is a group project
+ * @param {double} weighting - The weighting in regards to other courseworks on the module
+ * @param {integer} maxMark - The maximum attainable maxMark
+ * @returns {integer} - The coursework_id within the database, so it can be used in future
+ * @author Alex
+  */
 exports.setCoursework = (token, module, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		canMake(token, module).then(() => {
@@ -22,6 +35,13 @@ exports.setCoursework = (token, module, title, description, dueDate, isGroup, we
 		})
 	})
 
+/**
+ * Checks if the owner of a given token can add coursework to the given module
+ * @param {String} token - The authentication token for the user
+ * @param {String} module - The case sensitive name of the module
+ * @returns {boolean} - Resolves if validated
+ * @author Alex
+ */
 const canMake = (token, module) =>
 	new Promise((resolve, reject) => {
 		auth.token(token).then((user) => {
@@ -35,6 +55,13 @@ const canMake = (token, module) =>
 		})
 	})
 
+/**
+ * Checks if a user is the leader of a module or an administrator
+ * @param {String} module - The case sensitive name of the module
+ * @param {Object} user - The object returned by auth.token for a given user
+ * @returns {boolean} - Resolves if user is leader/admin
+ * @author Alex
+ */
 const checkLeader = (module, user) =>
 	new Promise((resolve, reject) => {
 		const adminRights = 3
@@ -53,6 +80,18 @@ const checkLeader = (module, user) =>
 		})
 	})
 
+/**
+ * Assigns coursework to a given module
+ * @param {String} module - The case sensitive name of the module
+ * @param {String} title - The title of the coursework
+ * @param {String} description - The description of the coursework
+ * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
+ * @param {boolean} isGroup - Whether the project is a group project
+ * @param {double} weighting - The weighting in regards to other courseworks on the module
+ * @param {integer} maxMark - The maximum attainable maxMark
+ * @returns {integer} - The coursework_id in the database
+ * @author Alex
+ */
 const assignCoursework = (module, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		getModuleId(module).then((moduleId) => {
@@ -69,6 +108,12 @@ const assignCoursework = (module, title, description, dueDate, isGroup, weightin
 		})
 	})
 
+/**
+ * Gets the module ID in the database for a given module
+ * @param {String} module - The case sensitive name of the module
+ * @returns {integer} - The database module_id of the module
+ * @author Alex
+ */
 const getModuleId = (module) =>
 	new Promise((resolve, reject) => {
 		const query = `SELECT module_id FROM module WHERE name='${module}'`
