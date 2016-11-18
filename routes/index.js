@@ -123,4 +123,5 @@ router.post('/api/module/add', function(req, res, next) {
 		}
 	})
 })
+
 module.exports = router;
