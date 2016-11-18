@@ -42,7 +42,7 @@ exports.token = (token) =>
  * @author Alex
  */
 const refreshToken = (token) => {
-	const query = `UPDATE login_token SET expiry_time = NOW() + interval '15 minutes' WHERE token = ${token}`
+	const query = `UPDATE login_token SET expiry_time = NOW() + interval '15 minutes' WHERE token = '${token}' AND expiry_time IS NOT NULL AND expiry_time < NOW() + interval '15 minutes'`
 	pool.query(query, function(err) {
 		if (err) {
 			console.log(err)
