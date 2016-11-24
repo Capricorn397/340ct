@@ -18,9 +18,9 @@ html
 		.tg .tg-l29w{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffccc9}
 		.tg .tg-i81m{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
 		
-		h2{
+		h1{
 			vertical-align: middle;
-			font-family: helvetica, serif;
+			font-family: "Trebuchet MS", serif;
 			text-shadow: #FFFFFF 0 2px 0;
 		}
 		
@@ -30,16 +30,19 @@ html
 		}
 		
 		.button {
-		   border: 1px solid #0a3c59;
-		   background: #3e779d;
-		   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
-		   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -o-linear-gradient(top, #65a9d7, #3e779d);
-		   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+				width: 15%;
+				margin-left: 10px;
+				text-align: center;
+				display: inline-block;
+				border: 1px solid #0a3c59;
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
 			 
-		   padding: 8px 16px;
+		   padding: 6px 2px;
 		   -webkit-border-radius: 4px;
 		   -moz-border-radius: 4px;
 		   border-radius: 4px;
@@ -56,21 +59,22 @@ html
 			 cursor: pointer;
 		   }
 		.button:hover {
-		   border: 1px solid #0a3c59;
-		   text-shadow: #1e4158 0 1px 0;
-			 
-		   background: #3e779d;
-		   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
-		   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
-		   background: -o-linear-gradient(top, #65a9d7, #3e779d);
-		   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
-			 
-		   color: #fff;
-			 cursor: pointer;
-		   }
+				margin-left: 10px;
+				border: 1px solid #0a3c59;
+				text-shadow: #1e4158 0 1px 0;
+
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+
+				color: #fff;
+				cursor: pointer;
+				}
 		.button:active {
+			margin-left: 10px;
 		   text-shadow: #1e4158 0 1px 0;
 		   border: 1px solid #0a3c59;
 			 
@@ -79,21 +83,24 @@ html
 		   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
 		   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
 		   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
-		   background: -o-linear-gradient(top, #3e779d, #65a9d7);
 		   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
 			 
 		   color: #fff;
 			 cursor: pointer;
 		   }
+
+		.Welcome{
+			text-align: left;
+			font-weight:bold;
+			font-size:18px;
+			font-family:"Trebuchet MS", Helvetica, sans-serif;
+		}
 			 
 	head
-			title My Assignments
-	
-	h2 			
-		img(src='culogo.png', alt='ECS Logo', width='100', height='60')
-		b  My Assignments		
-		
-	body
+			title ECS - My Assignments
+	h1 			
+		img(src='culogo.png', alt='ECS Logo', width='115', height='70')
+		b  Electronic Coursework System		
 		.navbar
 			.button(type='submit')
 				a(href='index.pug')
@@ -108,9 +115,16 @@ html
 				a(href='stu_submissions.pug')
 				b My Submissions
 			.button
-				a(href='login.pug')
+				a(href='login.html')
 				b Log Out
 				
+	p My Assignments
+	hr
+	body
+		.Welcome
+			b Welcome to the Coventry University Electronic Coursework System. Your assigments are detailed below.				
+			br
+			br
 	table.tg
 		tr
 			th.tg-2xk3 Module Code
