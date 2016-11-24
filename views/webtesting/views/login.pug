@@ -1,0 +1,119 @@
+doctype html
+html
+	style(type='text/css').
+  .form-container {
+     border: 1px solid #ffffff;
+     background: #007eb0;
+     background: -webkit-gradient(linear, left top, left bottom, from(#003957), to(#007eb0));
+     background: -webkit-linear-gradient(top, #003957, #007eb0);
+     background: -moz-linear-gradient(top, #003957, #007eb0);
+     background: -ms-linear-gradient(top, #003957, #007eb0);
+     background: -o-linear-gradient(top, #003957, #007eb0);
+     background-image: -ms-linear-gradient(top, #003957 0%, #007eb0 100%);
+     -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+     border-radius: 6px;
+     -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+     -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+     box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+     font-family: 'Helvetica Neue',Helvetica,sans-serif;
+     text-decoration: none;
+     vertical-align: middle;
+     min-width:300px;
+     padding:20px;
+     width:300px;
+     }
+  .form-field {
+     border: 1px solid #a2a3c7;
+     background: #ffffff;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+     color: #a3b0c7;
+     -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+     -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+     box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+     padding:8px;
+     margin-bottom:20px;
+     width:280px;
+     }
+  .form-field:focus {
+     background: #ffffff;
+     color: #000000;
+     }
+  .form-container h2 {
+     text-shadow: #000000 0 1px 0;
+     font-size:18px;
+     margin: 0 0 10px 0;
+     font-weight:bold;
+     text-align:center;
+      }
+  .form-title {
+     margin-bottom:10px;
+     color: #ffffff;
+     text-shadow: #000000 0 1px 0;
+     }
+  .submit-container {
+     margin:8px 0;
+     text-align:right;
+     }
+  .submit-button {
+     border: 1px solid #151d73;
+     background: #3642a3;
+     background: -webkit-gradient(linear, left top, left bottom, from(#5a70bf), to(#3642a3));
+     background: -webkit-linear-gradient(top, #5a70bf, #3642a3);
+     background: -moz-linear-gradient(top, #5a70bf, #3642a3);
+     background: -ms-linear-gradient(top, #5a70bf, #3642a3);
+     background: -o-linear-gradient(top, #5a70bf, #3642a3);
+     background-image: -ms-linear-gradient(top, #5a70bf 0%, #3642a3 100%);
+     -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+     border-radius: 4px;
+     -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+     -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+     box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+     text-shadow: #7f8ddb 0 1px 0;
+     color: #ffffff;
+     font-family: helvetica, serif;
+     padding: 8.5px 18px;
+     font-size: 14px;
+     text-decoration: none;
+     vertical-align: middle;
+     }
+  .submit-button:hover {
+     border: 1px solid #447314;
+     text-shadow: #0c1752 0 1px 0;
+     background: #3642a3;
+     background: -webkit-gradient(linear, left top, left bottom, from(#5c5abf), to(#3642a3));
+     background: -webkit-linear-gradient(top, #5c5abf, #3642a3);
+     background: -moz-linear-gradient(top, #5c5abf, #3642a3);
+     background: -ms-linear-gradient(top, #5c5abf, #3642a3);
+     background: -o-linear-gradient(top, #5c5abf, #3642a3);
+     background-image: -ms-linear-gradient(top, #5c5abf 0%, #3642a3 100%);
+     color: #fff;
+     }
+  .submit-button:active {
+     text-shadow: #0c0d52 0 1px 0;
+     border: 1px solid #151873;
+     background: #5a5abf;
+     background: -webkit-gradient(linear, left top, left bottom, from(#3638a3), to(#3642a3));
+     background: -webkit-linear-gradient(top, #3638a3, #5a5abf);
+     background: -moz-linear-gradient(top, #3638a3, #5a5abf);
+     background: -ms-linear-gradient(top, #3638a3, #5a5abf);
+     background: -o-linear-gradient(top, #3638a3, #5a5abf);
+     background-image: -ms-linear-gradient(top, #3638a3 0%, #5a5abf 100%);
+     color: #fff;
+     }
+     
+  body
+    form.form-container
+    	.form-title
+    		h2 Please log in to your account.
+    	.form-title Username
+    	input.form-field(type='text', name='username')
+    	br
+    	.form-title Password
+    	input.form-field(type='password', name='password')
+    	br
+    	.submit-container
+    		input.submit-button(type='submit', value='Log in')

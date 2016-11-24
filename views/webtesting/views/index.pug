@@ -1,20 +1,165 @@
+doctype html
 html
-  head
-    title= title
-    link(rel="stylesheet" type="text/css" href="./style.css")
-  
-div
-    h1 Coventry University ECS
-    h2 Student Homepage
-    p Your modules and assignments are below.
-    a(name="Home" href="./studenthome.pug")
-    a(name= "My Modules" href="./studentmodules.pug")
-    a(name="My Assignments" href="./studentassignments.pug")
-    a(name="My Submissions" href="./studentsubmissions.pug")
-    
-    div My Modules
-    ul
-      li: Software Engineering
-      li: Computer Science
-    div My Assignments
-    
+	style(type='text/css').
+		.tg  {
+			border-collapse:collapse;border-spacing:0;
+			vertical-align: center;
+			text-align: center;
+		}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+
+		.tg .tg-q7bu{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		.tg .tg-obv3{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		.tg .tg-2xk3{font-weight:bold;font-size:14px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+
+		.tg .tg-361j{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#efefef}
+		.tg .tg-lmlu{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#9aff99}
+		.tg .tg-l29w{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffccc9}
+		.tg .tg-i81m{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		
+		h2{
+			vertical-align: middle;
+			font-family: helvetica, serif;
+			text-shadow: #FFFFFF 0 2px 0;
+		}
+		
+		body {
+			background: #efefef;
+			font-family: verdana;
+		}
+		
+		.button {
+		   border: 1px solid #0a3c59;
+		   background: #3e779d;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+		   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+		   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+			 
+		   padding: 8px 16px;
+		   -webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		   border-radius: 4px;
+		   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   text-shadow: #7ea4bd 0 1px 0;
+			 
+		   color: #06426c;
+		   font-size: 16px;
+		   font-family: helvetica, serif;
+		   text-decoration: none;
+		   vertical-align: middle;
+			 cursor: pointer;
+		   }
+		.button:hover {
+		   border: 1px solid #0a3c59;
+		   text-shadow: #1e4158 0 1px 0;
+			 
+		   background: #3e779d;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+		   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+		   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+		   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+			 
+		   color: #fff;
+			 cursor: pointer;
+		   }
+		.button:active {
+		   text-shadow: #1e4158 0 1px 0;
+		   border: 1px solid #0a3c59;
+			 
+		   background: #65a9d7;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+		   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+		   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+			 
+		   color: #fff;
+			 cursor: pointer;
+		   }
+			 
+	head
+			title My Assignments
+	
+	h2 			
+		img(src='culogo.png', alt='ECS Logo', width='100', height='60')
+		b  My Assignments		
+		
+	body
+		.navbar
+			.button(type='submit')
+				a(href='index.pug')
+				b Home
+			.button(type='submit')
+				a(href='stu_modules.pug')
+				b My Modules
+			.button(type='submit')
+				a(href='stu_assignments.pug')
+				b My Assignments
+			.button(type='submit')
+				a(href='stu_submissions.pug')
+				b My Submissions
+			.button
+				a(href='login.pug')
+				b Log Out
+				
+	table.tg
+		tr
+			th.tg-2xk3 Module Code
+			th.tg-2xk3 Module Name
+			th.tg-2xk3 Module Tutor
+			th.tg-2xk3 Coursework No.
+			th.tg-2xk3 Coursework Title
+			th.tg-2xk3 Release Date
+			th.tg-2xk3 Due Date
+			th.tg-2xk3 Coversheets
+			th.tg-2xk3 Submission Link
+			th.tg-2xk3 Graded?
+			th.tg-2xk3 Module Mark
+		tr
+			td.tg-361j 340CT
+			td.tg-361j Software and Process Management
+			td.tg-361j Yih Ling Hedley
+			td.tg-361j 1
+			td.tg-361j Electronic Coursework System
+			td.tg-361j 01/10/16
+			td.tg-361j 5/12/16
+			td.tg-361j Coversheet
+			td.tg-361j
+				a(href='submit.pug') Submit Assignment
+			td.tg-l29w N
+			td.tg-361j n/a
+		tr
+			td.tg-q7bu 380CT
+			td.tg-q7bu Theoretical Aspects of Computer Science
+			td.tg-q7bu Kamal Bentahar
+			td.tg-q7bu 1
+			td.tg-q7bu Automatons, Lemmas and Grammars
+			td.tg-q7bu 14/10/16
+			td.tg-i81m 18/11/16
+			td.tg-q7bu Coversheet
+			td.tg-obv3
+				a(href='submit.pug') View Submission
+			td.tg-lmlu Y
+			td.tg-q7bu 80%
+		tr
+			td.tg-361j 380CT
+			td.tg-361j Theoretical Aspects of Computer Science
+			td.tg-361j Kamal Bentahar
+			td.tg-361j 2
+			td.tg-361j Set Searching and Algorithms
+			td.tg-361j 21/11/16
+			td.tg-361j 16/12/16
+			td.tg-361j Coversheet
+			td.tg-361j 
+				a(href='submit.pug') Submit Assignment
+			td.tg-l29w N
+			td.tg-361j n/a

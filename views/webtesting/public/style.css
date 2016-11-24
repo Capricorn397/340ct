@@ -1,6 +1,5 @@
 body {
-    background: url(http://www.planwallpaper.com/static/images/744081-background-wallpaper.jpg);
-    back
+    background: #0066ff;
     text-align: center;
     font-family: verdana;
 }
@@ -17,4 +16,7 @@ h2 {
     text-align: left;
     text-decoration:
     font-family: verdana;
+}
+div{
+  background-color: white;
 }
