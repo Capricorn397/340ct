@@ -26,7 +26,7 @@ router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
 })
 
-router.get('/modules/add', function(req, res, next) {
+router.get('/modules/add', function(req, res) {
 	res.render('partials/addModule')
 })
 // INPUT: Anything
@@ -104,20 +104,20 @@ router.post('/api/coursework', (req, res) => {
 	})
 })
 
-router.post('/api/module/add', function(req, res, next) {
+router.post('/api/module/add', function(req, res) {
 	modules.addModule(req.cookies.token ,req.body, function(response, error) {
 		if (error) {
-			res.status(500).json(response)
+			res.status(serverErrorCode).json(response)
 		} else {
 			res.json(response)
 		}
 	})
 })
 
-router.post('/api/module/add', function(req, res, next) {
+router.post('/api/module/add', function(req, res) {
 	modules.addModule(req.cookies.token ,req.body, function(response, error) {
 		if (error) {
-			res.status(500).json(response)
+			res.status(serverErrorCode).json(response)
 		} else {
 			res.json(response)
 		}

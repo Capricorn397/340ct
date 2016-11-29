@@ -16,7 +16,7 @@ exports.addModule = function(token, data){
 		if (user.rights >= adminRights){
 			const databaseQuery = `INSERT INTO module (name, tutor_id, description) \
 														VALUES ('${data.moduleName}', ${user.id}, '${data.moduleDescription}')`
-			Pool.query(databaseQuery, function(err){
+			pool.query(databaseQuery, function(err){
 				if (err){
 					return err
 				} else {
