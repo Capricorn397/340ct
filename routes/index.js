@@ -101,4 +101,32 @@ router.post('/api/coursework', (req, res) => {
 	})
 })
 
+/*INPUT:
+ * {
+ *		"student": "username",
+ *		"title": "title",
+ *		"description": "description",
+ *		"dueDate": "DueDate",
+ *		"isGroup": "isGroup"
+ *		"weighting": "weighting"
+ *		"maxMark": "maxMark"
+ * }
+ */
+/*OUTPUT:
+ *	{
+ * 		"success": "true",
+ *		"created_id": id
+ *	}
+ */
+/**
+ * Endpoint to finalise assignment of coursework to an individual student
+ */
+router.post('/api/coursework/student', (req, res) => {
+	coursework.setStudentCoursework(req.cookies.token, req.body.student, req.body.title, req.body.description, req.body.dueDate, req.body.isGroup, req.body.weighting, req.body.maxMark).then((courseworkId) => {
+		res.json({'success': true, 'created_id': courseworkId})
+	}).catch((err) => {
+		res.status(serverErrorCode).json({'success': false, 'data': err})
+	})
+})
+
 module.exports = router
