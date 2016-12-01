@@ -114,14 +114,4 @@ router.post('/api/module/add', function(req, res) {
 	})
 })
 
-router.post('/api/module/add', function(req, res) {
-	modules.addModule(req.cookies.token ,req.body, function(response, error) {
-		if (error) {
-			res.status(serverErrorCode).json(response)
-		} else {
-			res.json(response)
-		}
-	})
-})
-
 module.exports = router;
