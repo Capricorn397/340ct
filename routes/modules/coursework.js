@@ -148,7 +148,7 @@ const assignIndividualCoursework = (username, title, description, dueDate, isGro
 	 * @returns {integer} - The coursework_id within the database, so it can be used in future
 	 * @author Josg
 	  */
-exports.setCoursework = (token, username, title, description, dueDate, isGroup, weighting, maxMark) =>
+exports.setStudentCoursework = (token, username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		canMake(token, username).then(() => {
 			assignIndividualCoursework(username, title, description, dueDate, isGroup, weighting, maxMark).then((coursework_id) => {
