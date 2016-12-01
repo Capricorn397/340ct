@@ -123,7 +123,7 @@ const assignCoursework = (module, title, description, dueDate, isGroup, weightin
 const assignIndividualCoursework = (username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		getStudentId(username).then((userId) => {
-			const query = `INSERT INTO individual_coursework(student_id, title, description, due_date, is_group, weighting, maximum_mark) VALUES (${userId}, '${title}', '${description}', '${dueDate}', ${isGroup}, ${weighting}, ${maxMark}) RETURNING coursework_id`
+			const query = `INSERT INTO individual_coursework(student_id, title, description, due_date, is_group, weighting, maximum_mark) VALUES (${userId}, '${title}', '${description}', '${dueDate}', ${isGroup}, ${weighting}, ${maxMark}) RETURNING individual_coursework_id`
 			pool.query(query, (err, result) => {
 				if (err) {
 					reject(err)
