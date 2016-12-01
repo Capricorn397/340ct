@@ -13,7 +13,9 @@ pool.on('error', function(e) {
 
 exports.addModule = function(token, data){
 	auth.token(token).then((user) => {
+		console.log('pre auth')
 		if (user.rights >= adminRights){
+			console.log('post auth')
 			const databaseQuery = `INSERT INTO module (name, tutor_id, description) \
 														VALUES ('${data.moduleName}', ${user.id}, '${data.moduleDescription}')`
 			pool.query(databaseQuery, function(err){
