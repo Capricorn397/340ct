@@ -101,4 +101,12 @@ router.post('/api/coursework', (req, res) => {
 	})
 })
 
+router.post('/api/coursework/student', (req, res) => {
+	coursework.setStudentCoursework(req.cookies.token, req.body.student, req.body.title, req.body.description, req.body.dueDate, req.body.isGroup, req.body.weighting, req.body.maxMark).then((courseworkId) => {
+		res.json({'success': true, 'created_id': courseworkId})
+	}).catch((err) => {
+		res.status(serverErrorCode).json({'success': false, 'data': err})
+	})
+})
+
 module.exports = router

@@ -123,7 +123,7 @@ const assignCoursework = (module, title, description, dueDate, isGroup, weightin
 const assignIndividualCoursework = (username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		getStudentId(username).then((userId) => {
-			const query = `INSERT INTO coursework(user_id, title, description, due_date, is_group, weighting, maximum_mark) VALUES (${userId}, '${title}', '${description}', '${dueDate}', ${isGroup}, ${weighting}, ${maxMark}) RETURNING coursework_id`
+			const query = `INSERT INTO indivdual_coursework(student_id, title, description, due_date, is_group, weighting, maximum_mark) VALUES (${userId}, '${title}', '${description}', '${dueDate}', ${isGroup}, ${weighting}, ${maxMark}) RETURNING coursework_id`
 			pool.query(query, (err, result) => {
 				if (err) {
 					reject(err)
@@ -146,7 +146,7 @@ const assignIndividualCoursework = (username, title, description, dueDate, isGro
 	 * @param {double} weighting - The weighting in regards to other courseworks on the module
 	 * @param {integer} maxMark - The maximum attainable maxMark
 	 * @returns {integer} - The coursework_id within the database, so it can be used in future
-	 * @author Josg
+	 * @author Josh
 	  */
 exports.setStudentCoursework = (token, username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
@@ -189,7 +189,7 @@ const getModuleId = (module) =>
 	 */
 const getStudentId = (username) =>
 	new Promise((resolve, reject) => {
-		const query = `SELECT user_id FROM users WHERE name='${username}'`
+		const query = `SELECT user_id FROM users WHERE username='${username}'`
 		console.log(query)
 		pool.query(query, (err, result) => {
 			if (err) {
