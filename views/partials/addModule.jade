@@ -15,7 +15,8 @@ block content
 						const desc = document.getElementById('modDesc').value;
 						var pay = {modName: name, ModDesc: desc};
 						var async = true;
-						console.log('pre post')
+						console.log(name)
+						console.log(desc)
 						$.ajax({
 							type: 'POST',
 							url: '../api/module/add',

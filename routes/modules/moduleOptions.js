@@ -15,7 +15,7 @@ exports.addModule = function(token, data){
 	auth.token(token).then((user) => {
 		console.log('pre auth')
 		if (user.rights >= adminRights){
-			console.log('post auth')
+			console.log(`modops ${data.moduleName} and ${user.id} and ${data.moduleDescription}`)
 			const databaseQuery = `INSERT INTO module (name, tutor_id, description) \
 														VALUES ('${data.moduleName}', ${user.id}, '${data.moduleDescription}')`
 			pool.query(databaseQuery, function(err){

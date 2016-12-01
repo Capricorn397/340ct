@@ -105,7 +105,7 @@ router.post('/api/coursework', (req, res) => {
 })
 
 router.post('/api/module/add', function(req, res) {
-	console.log('In index post')
+	console.log(`index ${req.body}`)
 	modules.addModule(req.cookies.token ,req.body, function(response, error) {
 		if (error) {
 			res.status(serverErrorCode).json(response)
