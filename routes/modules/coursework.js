@@ -128,7 +128,7 @@ const assignIndividualCoursework = (username, title, description, dueDate, isGro
 				if (err) {
 					reject(err)
 				} else {
-					resolve(result.rows[0].coursework_id)
+					resolve(result.rows[0].individual_coursework_id)
 				}
 			})
 		}).catch((err) => {
