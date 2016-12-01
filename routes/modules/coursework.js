@@ -108,18 +108,18 @@ const assignCoursework = (module, title, description, dueDate, isGroup, weightin
 		})
 	})
 
-	/**
-	 * Assigns coursework to an individual student
-	 * @param {String} username - The username of the student
-	 * @param {String} title - The title of the coursework
-	 * @param {String} description - The description of the coursework
-	 * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
-	 * @param {boolean} isGroup - Whether the project is a group project
-	 * @param {double} weighting - The weighting in regards to other courseworks on the module
-	 * @param {integer} maxMark - The maximum attainable maxMark
-	 * @returns {integer} - The coursework_id in the database
-	 * @author Josh
-	 */
+/**
+ * Assigns coursework to an individual student
+ * @param {String} username - The username of the student
+ * @param {String} title - The title of the coursework
+ * @param {String} description - The description of the coursework
+ * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
+ * @param {boolean} isGroup - Whether the project is a group project
+ * @param {double} weighting - The weighting in regards to other courseworks on the module
+ * @param {integer} maxMark - The maximum attainable maxMark
+ * @returns {integer} - The coursework_id in the database
+ * @author Josh
+ */
 const assignIndividualCoursework = (username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		getStudentId(username).then((userId) => {
@@ -135,19 +135,19 @@ const assignIndividualCoursework = (username, title, description, dueDate, isGro
 			reject(err)
 		})
 	})
-	/**
-	 * Sets coursework for a given module
-	 * @param {String} token - The authentication token for the user trying to set the coursework
-	 * @param {String} username - The name of the user
-	 * @param {String} title - The title of the coursework
-	 * @param {String} description - The description of the coursework
-	 * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
-	 * @param {boolean} isGroup - Whether the project is a group project
-	 * @param {double} weighting - The weighting in regards to other courseworks on the module
-	 * @param {integer} maxMark - The maximum attainable maxMark
-	 * @returns {integer} - The coursework_id within the database, so it can be used in future
-	 * @author Josh
-	  */
+/**
+ * Sets coursework for a given module
+ * @param {String} token - The authentication token for the user trying to set the coursework
+ * @param {String} username - The name of the user
+ * @param {String} title - The title of the coursework
+ * @param {String} description - The description of the coursework
+ * @param {String} dueDate - The date the coursework is due, in YYYYMMDD format
+ * @param {boolean} isGroup - Whether the project is a group project
+ * @param {double} weighting - The weighting in regards to other courseworks on the module
+ * @param {integer} maxMark - The maximum attainable maxMark
+ * @returns {integer} - The coursework_id within the database, so it can be used in future
+ * @author Josh
+  */
 exports.setStudentCoursework = (token, username, title, description, dueDate, isGroup, weighting, maxMark) =>
 	new Promise((resolve, reject) => {
 		canMake(token, username).then(() => {
@@ -181,12 +181,12 @@ const getModuleId = (module) =>
 			}
 		})
 	})
-	/**
-	 * Gets the student ID in the database for a given student
-	 * @param {String} username - The username of the student
-	 * @returns {integer} - The database student_id of the student
-	 * @author Josh
-	 */
+/**
+ * Gets the student ID in the database for a given student
+ * @param {String} username - The username of the student
+ * @returns {integer} - The database student_id of the student
+ * @author Josh
+ */
 const getStudentId = (username) =>
 	new Promise((resolve, reject) => {
 		const query = `SELECT user_id FROM users WHERE username='${username}'`
