@@ -10,6 +10,22 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/home', function(req, res, next)) {
+  res.render('webtesting/views/blank.pug');
+}
+
+router.get('/studentassignments', function(req, res, next)) {
+  res.render('webtesting/views/stu_assign.pug');
+}
+
+router.get('/studentmodules', function(req, res, next)) {
+  res.render('webtesting/views/stu_modules.pug');
+}
+
+router.get('/studentmodules', function(req, res, next)) {
+  res.render('webtesting/views/stu_modules.pug');
+}
+
 router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });
