@@ -10,6 +10,18 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/studenthome', (req, res, next) => {
+  res.render('webtesting/views/stud_home.pug')
+})
+
+router.get('/studentassign', (req, res, next) => {
+  res.render('webtesting/views/stud_assign.pug')
+})
+
+router.get('/studentmodules', (req, res, next) => {
+  res.render('webtesting/views/stud_mods.pug')
+})
+
 router.get('/login', function(req, res, next) {
   res.render('partials/login');
 });

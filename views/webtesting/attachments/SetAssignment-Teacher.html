@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+
+
+button {
+ background-color:grey;
+ color: white;
+ font-size: 18px;
+ padding: 10px 20px;
+ margin: 8px 0;
+ cursor: pointer;
+ width: 20%;
+ border: none;
+ border-radius: 10px;
+ display: block;
+}
+
+button2 {
+	background-color:none;
+	color: black;
+	font-size: 18px;
+	cursor: pointer;
+	border: none;
+	position: absolute;
+	right: 2px;
+	top: 2px
+}
+
+
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 50%;
+    background-color: solid grey;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+
+}
+
+input[type=submit]:hover {
+    background-color: lightblue;
+}
+
+form{
+border: 1px solid grey;
+padding: 10px;
+display: block;
+background-color: lightgrey;
+}
+
+
+</style>
+
+<body>
+
+
+<div class="class">
+ 
+ <button type="submit"><b>Home</b></button>
+ <button type="submit"><b>My Modules</b></button>
+ <button type="submit"><b>My Assignments</b></button>
+ <button type="submit"><b>My Submissions</b></button>
+</div>
+
+
+<h3>Set Assigment</h3>
+
+<div>
+  <form action="action_page.php">
+
+    <label for="mcode"><br>Module Code:<br></label>
+    <select id="mcode" name="mcode"><br>
+      <option value="120CT">120CT</option>
+      <option value="106CR">106CR</option>
+      <option value="124MS">124MS</option>
+      <option value="104KM">104KM</option>
+    </select>
+
+    <label for="mtitle"><br>Module Title:<br></label>
+    <select id="mtitle" name="mtitle">
+      <option value="computerarc">Computer Architecture</option>
+      <option value="designingforusabiliy">Designing for Usability</option>
+      <option value="logicandsets">Logic and Sets</option>
+      <option value="enterpriseandinfo">Entreprise and Information systems</option>
+    </select>
+
+    <label for="tutor"><br>Module Tutor responsible for coursework:<br></label>
+    <select id="tutor" name="tutor"></br>
+      <option value="mra">Mr A</option>
+      <option value="mrsb">Mrs B</option>
+      <option value="mrsc">Mrs C</option>
+      <option value="missD">Miss D</option>
+    </select>
+
+    <label for="cwnum"><br>Coursework No.:<br></label>
+    <input type="text" id="cwnum" name="cwnumber">
+
+    <label for="cwtitle"><br>Coursework Title:<br></label>
+    <input type="text" id="cwtitle" name="cwtitle">
+
+    <label for="assesstype"><br>Assessment Type:<br></label>
+    <select id="assesstype" name="assesstype"></br>
+      <option value="individual">Individual</option>
+      <option value="group">Group</option>
+    </select>
+
+    <label for="idate"><br>Issue Date:<br></label>
+    <input type="date" name=idate>
+
+    <label for="duedate"><br>Due Date & Time:<br></label>
+    <input type="datetime-local" name=duedate>
+
+    <label for="modmark"><br>% of Module Mark:<br></label>
+    <input type="text" id="modmark" name="modulemark">
+
+  
+    <input type="submit" value="Set Assignment">
+  </form>
+</div>
+
+
+
+<button2 type="submit">Log Out</button2>
+</body>
+</html>
