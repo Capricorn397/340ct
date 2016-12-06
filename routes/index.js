@@ -5,6 +5,7 @@ const router = express.Router()
 const login = require('./modules/login')
 const register = require('./modules/register')
 const coursework = require('./modules/coursework')
+const submission = require('./modules/submission')
 
 
 const serverErrorCode = 500
@@ -24,6 +25,10 @@ router.get('/register', function(req, res) {
 
 router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
+})
+
+router.get('/upload', function(req, res) {
+	res.render('partials.upload')
 })
 
 // INPUT: Anything
@@ -127,6 +132,10 @@ router.post('/api/coursework/student', (req, res) => {
 	}).catch((err) => {
 		res.status(serverErrorCode).json({'success': false, 'data': err})
 	})
+})
+
+router.post('/api/upload', (req, res) => {
+	submission()
 })
 
 module.exports = router
