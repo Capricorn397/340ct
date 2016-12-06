@@ -1,0 +1,4 @@
+Modules page
+Assignments page
+Login Page
+Student Homepage
