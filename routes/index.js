@@ -135,7 +135,7 @@ router.post('/api/coursework/student', (req, res) => {
 })
 
 router.post('/api/upload', (req, res) => {
-	submission()
+	submission(req)
 })
 
 module.exports = router
