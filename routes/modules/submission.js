@@ -4,7 +4,7 @@ const auth = require('./auth')
 const formidable = require ('formidable')
 const fs = require ('fs')
 const path = require ('path')
-const Pool = require ('pg')
+const Pool = require ('pg').Pool
 const logins = require('../constants')
 
 const pool = new Pool(logins.dbInfo)
