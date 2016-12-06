@@ -28,7 +28,7 @@ router.get('/myToken', function(req, res) {
 })
 
 router.get('/upload', function(req, res) {
-	res.render('partials.upload')
+	res.render('partials/upload')
 })
 
 // INPUT: Anything
