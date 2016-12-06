@@ -20,7 +20,7 @@ module.exports = (req, res) => {
 	form.uploadDir = path.join(__dirname, '../uploads')
 
 	auth.token(req.cookies.token).then((user) => {
-		const query = `INSERT INTO submission (student_id, submission_path, status) VALUES (${user.id}, '${form.pathDir}', 'SUBMITTED')`
+		const query = `INSERT INTO submission (student_id, submission_path, status) VALUES (${user.id}, '${form.uploadDir}', 'SUBMITTED')`
 		pool.query(query, function(err, result) {
 			if (err) {
 				console.log(err)
