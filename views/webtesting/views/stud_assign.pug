@@ -103,20 +103,15 @@ html
 		b  Electronic Coursework System		
 		.navbar
 			.button(type='submit')
-				a(href="C:\Users\James\Documents\GitHub\340ct\views\webtesting\views\blank.pug")
-				b Home
+				a(href="/studenthome") Home
 			.button(type='submit')
-				a(href='stu_modules.pug')
-				b My Modules
+				a(href='/studentmodules') My Modules
 			.button(type='submit')
-				a(href='stu_assignments.pug')
-				b My Assignments
+				a(href='/studentassign') My Assignments
 			.button(type='submit')
-				a(href='stu_submissions.pug')
-				b My Submissions
-			.button
-				a(href='login.html')
-				b Log Out
+				a(href='/studentsubs') My Submissions
+			.button(type='submit')
+				a(href='login.pug') Log Out
 				
 	p My Assignments
 	hr
