@@ -27,9 +27,12 @@ exports.deleteUser = (token, user) =>
 		auth.token(token).then((result) => {
 			if (result.rights >= adminRights) {
 				const query = `DELETE FROM users WHERE username='${user}'`
-				pool.query(query, function(err) {
+				pool.query(query, function(err, result) {
 					if (err) {
 						reject(err)
+						if (result.rows.length === 0) {
+							reject('User does not exist')
+						}	
 					} else {
 						resolve()
 					}

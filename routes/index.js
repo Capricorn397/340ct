@@ -42,7 +42,7 @@ router.get('/viewUsers', function(req, res) {
 	})
 })
 
-router.delete('/deleteUser', function(req, res) {
+router.delete('/delUser', function(req, res) {
 	const toDelete = JSON.parse(req.data.user)
 	userAdmin.deleteUser(req.cookies.token, toDelete).then(() => {
 		res.send('Successfully deleted user: ' + toDelete)
