@@ -38,9 +38,9 @@ block content
 							$.ajax({
 								type: 'DELETE',
 								url: '/delUser',
-								data: JSON.stringify({
+								data: {
 												'user': username
-											}),
+											},
 											error: function(err) {
 												console.log(err)
 											},
