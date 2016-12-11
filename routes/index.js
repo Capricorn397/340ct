@@ -7,6 +7,7 @@ const register = require('./modules/register')
 const coursework = require('./modules/coursework')
 const modules = require('./modules/moduleOptions');
 const submission = require('./modules/submission')
+const userAdmin = require('./modules/userAdmin')
 
 
 const serverErrorCode = 500
@@ -35,6 +36,24 @@ router.get('/modules/add', function(req, res) {
 
 router.get('/upload', function(req, res) {
 	res.render('partials/upload')
+})
+
+router.get('/userAdmin', function(req, res) {
+	res.render('partials/userAdmin')
+})
+
+router.get('/viewUsers', function(req, res) {
+	userAdmin.viewUsers(req.cookies.token).then((users) => {
+		res.send(users.rows)
+	})
+})
+
+router.delete('/delUser', function(req, res) {
+	const data = req.body
+	const toDelete = data.user
+	userAdmin.deleteUser(req.cookies.token, toDelete).then(() => {
+		res.send('Successfully deleted user: ' + toDelete)
+	})
 })
 
 // INPUT: Anything
