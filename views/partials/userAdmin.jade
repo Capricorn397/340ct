@@ -6,11 +6,11 @@ block content
 			script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
 			script(type="text/javascript").
 				$(document).ready(function() {
-					event.preventDefault()
 					const div = document.getElementById('container')
 					const par = document.createElement('P')
 					const p = div.appendChild(par)
 					$('#viewUsers').click(function() {
+						event.preventDefault()
 						par.innerHTML = ''
 						console.log('hey')
 						$.ajax({
