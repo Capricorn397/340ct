@@ -31,12 +31,14 @@ block content
 									var toDelete = prompt('Which user would you like to delete?')
 										deleteUser(toDelete)
 								}
-								
-									function deleteUser(username) {
-										$.ajax({
-											type: 'DELETE',
-											url: '/delUser',
-											data: JSON.stringify({
+							}
+						})
+					})
+						function deleteUser(username) {
+							$.ajax({
+								type: 'DELETE',
+								url: '/delUser',
+								data: JSON.stringify({
 												'user': username
 											}),
 											error: function(err) {
@@ -47,8 +49,5 @@ block content
 											}
 										})
 									}
-								}
-							})
-						})
-					})
+				})
 
