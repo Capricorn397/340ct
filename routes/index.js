@@ -37,7 +37,9 @@ router.get('/userAdmin', function(req, res) {
 })
 
 router.get('/viewUsers', function(req, res) {
-	userAdmin.viewUsers(req.cookies.token)
+	userAdmin.viewUsers(req.cookies.token).then((users) => {
+		res.send(users.rows)
+	})
 })
 
 // INPUT: Anything
