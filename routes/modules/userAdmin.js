@@ -6,7 +6,7 @@ const adminRights = 3
 const Pool = require('pg').Pool
 const pool = new Pool(logins.dbInfo)
 
-exports.viewUsers = (token) => {
+exports.viewUsers = (token) =>
 	new Promise ((resolve, reject) => {
 		auth.token(token).then((user) => {
 			if (user.rights >= adminRights) {
@@ -21,4 +21,3 @@ exports.viewUsers = (token) => {
 			}
 		})
 	})
-}
