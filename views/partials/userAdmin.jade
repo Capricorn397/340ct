@@ -7,7 +7,7 @@ block content
 			script(type="text/javascript").
 				$(document).ready(function() {
 					const div = document.getElementById('container')
-					const par = document.getElementById('P')
+					const par = document.createElement('P')
 					const p = div.appendChild(par)
 					$('#viewUsers').click(function() {
 						par.innerHTML = ''
