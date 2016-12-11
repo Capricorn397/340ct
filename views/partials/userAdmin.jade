@@ -29,26 +29,26 @@ block content
 
 								document.getElementById('del').onclick = function() {
 									var toDelete = prompt('Which user would you like to delete?')
-									deleteUser(toDelete)
+										deleteUser(toDelete)
 								}
 								
-								function deleteUser(username) {
-									$.ajax({
-										type: 'DELETE',
-										url: '/delUser',
-										data: JSON.stringify({
-											'user': username
-										}),
-										error: function(err) {
-											console.log(err)
-										},
-										success: function(result) {
-											console.log(result)
-										}
-									})
+									function deleteUser(username) {
+										$.ajax({
+											type: 'DELETE',
+											url: '/delUser',
+											data: JSON.stringify({
+												'user': username
+											}),
+											error: function(err) {
+												console.log(err)
+											},
+											success: function(result) {
+												console.log(result)
+											}
+										})
+									}
 								}
-							}
+							})
 						})
 					})
-				})
 
