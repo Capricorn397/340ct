@@ -11,13 +11,14 @@ block content
 			script(type="text/javascript" src = "./js/hashcode.js")
 			script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
 			script(type="text/javascript").
-				$(document).ready(function() {
-					$('form').submit(function() {
-						event.preventDefault();
-						const use = document.getElementById('user').value;
-						const pass = document.getElementById('pass').value;
-						var pay = {user: use};
-						var async = true;
+				$(document).ready(function() { //When page is loaded fully
+					$('form').submit(function() { //submit the information within the form
+						event.preventDefault(); //Stops the page from reloading immediately
+						const use = document.getElementById('user').value; //get the username
+						const pass = document.getElementById('pass').value; //get the password
+						var pay = {user: use}; //formatting for the server to accept
+						var async = true; //setting asynchronisity true to keep code order in check
+						//getting a salt through a POST request to the salt getting function sending the pay as the body
 						const salt = $.ajax( {
 							type: 'POST',
 							url: 'api/login/salt',
@@ -25,18 +26,20 @@ block content
 							error: function() {
 								console.log('Error sending or recieving user and salt');
 							},
-							success: function(){
+							success: function(){ //if successful move onto next function
 								hash();
 							}
 						});
+						//A function to hash the password with it's salt
 						function hash(){
-							const slt = salt.responseJSON.salt;
-							const sltpass = pass + slt;
-							const hashedpassword = hashcode(sltpass);
-							const tokesend = {
+							const slt = salt.responseJSON.salt; //The salt returned previously
+							const sltpass = pass + slt; //Salted password
+							const hashedpassword = hashcode(sltpass); //The hashed password that goes to ./js/hashcode.js
+							const tokesend = { //the new payload to be sent
 								user: use,
 								password: hashedpassword
 							}
+							//POST request to backend to check the username and hashed password against the database
 							const token = $.ajax( {
 								type: 'POST',
 								url: 'api/login/token',
@@ -44,17 +47,18 @@ block content
 								error: function() {
 									console.log('Error sending or recieving token');
 								},
-								success: function(){
-								const lod = savetoken(token);
-									if (lod === true){
-										window.location = '/';
+								success: function(){ //if successful a token is returned
+								const lod = savetoken(token); //Save the token to the user's cookies
+									if (lod === true){ //If completed
+										window.location = '/'; //load the homepage
 									}
 								}
 							});
 						}
+						//The function to save the token to the user's cookies
 						function savetoken(token){
-							const cook = token.responseJSON.token;
-							document.cookie = 'token='+cook;
+							const cook = token.responseJSON.token; //the cookie to be saved
+							document.cookie = 'token='+cook; //saves the cookie
 							return true;
 						}
 						return false;
