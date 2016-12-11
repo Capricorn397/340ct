@@ -3,21 +3,21 @@ div
  button#viewUsers(type='button') View Favourites
 #container
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-	script(type='text/javascript').
-  $(document).ready(function() {
-  	const div = document.getElementById('container')
-  	const par = document.getElementById('P')
-  	const p = div.appendChild(par)
-  	$('#viewUsersr').on('click', function() {
-  		par.innerHTML = ''
-  		$.ajax({
-  			url: '/viewUsers',
-  			type: 'GET',
-  			success: function(users){
-  				p.appendChild(document.createTextNode(users))
-  				document.body.appendChild(p)
-  			}
-  		})
+script(type='text/javascript').
+	$(document).ready(function() {
+		const div = document.getElementById('container')
+  const par = document.getElementById('P')
+  const p = div.appendChild(par)
+  $('#viewUsersr').on('click', function() {
+  	par.innerHTML = ''
+  	$.ajax({
+  		url: '/viewUsers',
+  		type: 'GET',
+  		success: function(users){
+  			p.appendChild(document.createTextNode(users))
+  			document.body.appendChild(p)
+  		}
   	})
   })
+ })
 
