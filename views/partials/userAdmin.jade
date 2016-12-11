@@ -8,7 +8,7 @@ script(type="text/javascript").
 		const div = document.getElementById('container')
 		const par = document.getElementById('P')
 		const p = div.appendChild(par)
-		$('#viewUsers').on('click', function() {
+		$('#viewUsers').click(function() {
 			par.innerHTML = ''
 			console.log('hey')
 			$.ajax({
