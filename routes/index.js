@@ -111,7 +111,7 @@ router.post('/api/module/add', function(req, res) {
 			res.status(serverErrorCode).json(err)
 		} else {
 			console.log('back to index')
-			res.json(dat)
+			res.send(dat)
 		}
 	})
 })
