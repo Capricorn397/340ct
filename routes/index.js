@@ -31,6 +31,13 @@ router.get('/upload', function(req, res) {
 	res.render('partials/upload')
 })
 
+router.get('/userAdmin', function(req, res) {
+	res.render('partials/userAdmin')
+})
+
+router.get('/viewUsers', function(req, res) {
+})
+
 // INPUT: Anything
 // OUTPUT: Anything
 router.post('/api/echo', function(req, res) {
