@@ -1,11 +1,11 @@
 'use strict'
 
-const auth = require('./auth')
-const formidable = require ('formidable')
+const auth = require('./auth') // used to authenticate
+const formidable = require ('formidable') //used to take an incoming form
 const fs = require ('fs')
-const path = require ('path')
-const Pool = require ('pg').Pool
-const logins = require('../constants')
+const path = require ('path') // used to append path names
+const Pool = require ('pg').Pool// used to query the sql database
+const logins = require('../constants')// used to login to the database
 
 const pool = new Pool(logins.dbInfo)
 pool.on('error', function(e) {
@@ -15,7 +15,7 @@ pool.on('error', function(e) {
 
 module.exports = (req, res) => {
 
-	const form = new formidable.IncomingForm()
+	const form = new formidable.IncomingForm() 
 
 	form.uploadDir = path.join(__dirname, '../uploads')
 

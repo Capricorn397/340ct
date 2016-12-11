@@ -54,7 +54,7 @@ router.delete('/delUser', function(req, res) {
 // OUTPUT: Anything
 router.post('/api/echo', function(req, res) {
 	console.log(req.body)
-	res.json(req)
+	res.json(req.body)
 })
 
 // INPUT: { "user": "test" }

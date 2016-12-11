@@ -36,6 +36,11 @@ block content
 							}
 						})
 					})
+					/**
+						* function that posts to the server to delete a user
+						* param {string} username - Takes in the user to delete
+						*returns {boolean} Returns true if successful 
+					 */
 						function deleteUser(username) {
 							$.ajax({
 								type: 'DELETE',
