@@ -19,8 +19,34 @@ block content
 							success: function(users){
 								for (const i in users) {
 								p.appendChild(document.createTextNode(users[i].username))
+								p.appendChild(document.createElement('br))
 								}
+								var deleteButton = p.appendChild(document.createElement('buuton'))
+								deleteButton.id = 'del'
+								deleteButton.appendChild(document.createTextNode('Delete User'))
 								document.body.appendChild(p)
+
+
+								document.getElementById('del').onclick = function() {
+									var toDelete = prompt('Which user would you like to delete?')
+									deleteUser(toDelete)
+								}
+								
+								function deleteUser(username) {
+									$.ajax({
+										type: 'DELETE',
+										url: '/delUser',
+										data: JSON.stringify({
+											'user': username
+										}),
+										error: function(err) {
+											console.log(err)
+										},
+										success: function(result) {
+											console.log(result)
+										}
+									})
+								}
 							}
 						})
 					})

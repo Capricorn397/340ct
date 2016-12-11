@@ -21,3 +21,19 @@ exports.viewUsers = (token) =>
 			}
 		})
 	})
+
+exports.deleteUser = (token, user) =>
+	new Promise ((resolve, reject) => {
+		auth.token(token).then((result) => {
+			if (result.rights >= adminRights) {
+				const query = `DELETE FROM users WHERE username='${user}'`
+				pool.query(query, function(err) {
+					if (err) {
+						reject(err)
+					} else {
+						resolve()
+					}
+				})
+			}
+		})
+	})
