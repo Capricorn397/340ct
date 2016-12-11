@@ -1,3 +1,8 @@
+'use strict'
+/**
+ * @param {Number} hashCode - The inputted salted password
+ * @returns {Number} hash - The hashed salted password
+ */
 function hashcode(hashCode) {
   var hash = 0, i, c, l
   if (hashCode.length === 0) return hash

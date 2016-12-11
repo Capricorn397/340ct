@@ -1,0 +1,33 @@
+extends ../layout
+block content
+	.container
+		form.form-addmodule
+			h2.form-addmodule-heading Please input module details
+			input.input-block-level(id = "modName", type="text", name="Module_Name", placeholder="Module Name")
+			input.input-block-level(id = "modDesc", type="text", name="Description", placeholder="Description")
+			button.btn.btn-large.btn-primary Submit
+			script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+			script(type="text/javascript").
+				$(document).ready(function() {
+					$('form').submit(function() {
+						event.preventDefault();
+						const name = document.getElementById('modName').value;
+						const desc = document.getElementById('modDesc').value;
+						var pay = {modName: name, modDesc: desc};
+						var async = true;
+						console.log(name)
+						console.log(desc)
+						$.ajax({
+							type: 'POST',
+							url: '../api/module/add',
+							data: pay,
+							error: function(){
+								console.log(err);
+							},
+							success: function(){
+								console.log('Module added successfully');
+							}
+						})
+						return console.log('EOF');
+					});
+				});

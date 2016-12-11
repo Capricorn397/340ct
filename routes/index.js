@@ -5,6 +5,7 @@ const router = express.Router()
 const login = require('./modules/login')
 const register = require('./modules/register')
 const coursework = require('./modules/coursework')
+const modules = require('./modules/moduleOptions');
 const submission = require('./modules/submission')
 
 
@@ -25,6 +26,11 @@ router.get('/register', function(req, res) {
 
 router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
+})
+
+
+router.get('/modules/add', function(req, res) {
+	res.render('partials/addModule')
 })
 
 router.get('/upload', function(req, res) {
@@ -106,6 +112,20 @@ router.post('/api/coursework', (req, res) => {
 	})
 })
 
+router.post('/api/module/add', function(req, res) {
+	console.log(req.body.modDesc)
+	modules.addModule(req.cookies.token ,req.body.modName, req.body.modDesc, function(dat, err) {
+		if (err) {
+			res.status(serverErrorCode).json(err)
+		} else {
+			console.log('back to index')
+			res.send(dat)
+		}
+	})
+})
+
+module.exports = router;
+
 /*INPUT:
  * {
  *		"student": "username",
@@ -139,3 +159,4 @@ router.post('/api/upload', (req, res) => {
 })
 
 module.exports = router
+
