@@ -6,6 +6,8 @@ const login = require('./modules/login')
 const register = require('./modules/register')
 const coursework = require('./modules/coursework')
 const modules = require('./modules/moduleOptions');
+const submission = require('./modules/submission')
+
 
 const serverErrorCode = 500
 
@@ -26,9 +28,15 @@ router.get('/myToken', function(req, res) {
 	res.json({'token': req.cookies.token })
 })
 
+
 router.get('/modules/add', function(req, res) {
 	res.render('partials/addModule')
 })
+
+router.get('/upload', function(req, res) {
+	res.render('partials/upload')
+})
+
 // INPUT: Anything
 // OUTPUT: Anything
 router.post('/api/echo', function(req, res) {
@@ -117,3 +125,38 @@ router.post('/api/module/add', function(req, res) {
 })
 
 module.exports = router;
+
+/*INPUT:
+ * {
+ *		"student": "username",
+ *		"title": "title",
+ *		"description": "description",
+ *		"dueDate": "DueDate",
+ *		"isGroup": "isGroup"
+ *		"weighting": "weighting"
+ *		"maxMark": "maxMark"
+ * }
+ */
+/*OUTPUT:
+ *	{
+ * 		"success": "true",
+ *		"created_id": id
+ *	}
+ */
+/**
+ * Endpoint to finalise assignment of coursework to an individual student
+ */
+router.post('/api/coursework/student', (req, res) => {
+	coursework.setStudentCoursework(req.cookies.token, req.body.student, req.body.title, req.body.description, req.body.dueDate, req.body.isGroup, req.body.weighting, req.body.maxMark).then((courseworkId) => {
+		res.json({'success': true, 'created_id': courseworkId})
+	}).catch((err) => {
+		res.status(serverErrorCode).json({'success': false, 'data': err})
+	})
+})
+
+router.post('/api/upload', (req, res) => {
+	submission(req, res)
+})
+
+module.exports = router
+

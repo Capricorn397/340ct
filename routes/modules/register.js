@@ -63,12 +63,12 @@ const checkExists = (user) =>
 		pool.query(query, function(err, result) {
 			if (err) {
 				console.log(err)
-				resolve()
+				reject()
 			}
 			if (result.rows.length === 0) {
-				reject()
-			} else {
 				resolve()
+			} else {
+				reject()
 			}
 		})
 	})
