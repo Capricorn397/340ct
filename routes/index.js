@@ -106,7 +106,7 @@ router.post('/api/coursework', (req, res) => {
 
 router.post('/api/module/add', function(req, res) {
 	console.log(req.body.modName)
-	modules.addModule(req.cookies.token ,req.body, function(response, error) {
+	modules.addModule(req.cookies.token ,req.body.modName, req.body.modDesc, function(response, error) {
 		if (error) {
 			res.status(serverErrorCode).json(response)
 		} else {

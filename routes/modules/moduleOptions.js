@@ -11,18 +11,18 @@ pool.on('error', function(e) {
 	console.log(e);
 });
 
-exports.addModule = function(token, data){
+exports.addModule = function(token, name, desc){
 	auth.token(token).then((user) => {
 		console.log('pre auth')
 		if (user.rights >= adminRights){
-			console.log(`modops ${data.moduleName} and ${user.id} and ${data.moduleDescription}`)
+			console.log(`modops ${name} and ${user.id} and ${desc}`)
 			const databaseQuery = `INSERT INTO module (name, tutor_id, description) \
-														VALUES ('${data.moduleName}', ${user.id}, '${data.moduleDescription}')`
+														VALUES ('${name}', ${user.id}, '${desc}')`
 			pool.query(databaseQuery, function(err){
 				if (err){
 					return err
 				} else {
-					return `Module ${data.moduleName} added`
+					return `Module ${name} added`
 				}
 			})
 		}
@@ -40,7 +40,4 @@ exports.viewModule = function(token, data){
 			return response
 		}
 	})
-}
-exports.editModule = function(token, data){
-	console.log('Not Complete')
 }
