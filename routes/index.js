@@ -6,6 +6,7 @@ const login = require('./modules/login')
 const register = require('./modules/register')
 const coursework = require('./modules/coursework')
 const submission = require('./modules/submission')
+const userAdmin = require('./modules/userAdmin')
 
 
 const serverErrorCode = 500
@@ -36,13 +37,14 @@ router.get('/userAdmin', function(req, res) {
 })
 
 router.get('/viewUsers', function(req, res) {
+	userAdmin.viewUsers(req.cookies.token)
 })
 
 // INPUT: Anything
 // OUTPUT: Anything
 router.post('/api/echo', function(req, res) {
 	console.log(req.body)
-	res.json(req.body)
+	res.json(req)
 })
 
 // INPUT: { "user": "test" }
