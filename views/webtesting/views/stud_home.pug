@@ -1,0 +1,120 @@
+doctype html
+html
+	style(type='text/css').
+		h1{
+			vertical-align: middle;
+			font-family: "Trebuchet MS", serif;
+			text-shadow: #FFFFFF 0 2px 0;
+		}
+		
+		body {
+			background: #efefef;
+			font-family: verdana;
+		}
+		
+		.button {
+				width: 15%;
+				margin-left: 10px;
+				text-align: center;
+				display: inline-block;
+				border: 1px solid #0a3c59;
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+			 
+		   padding: 6px 2px;
+		   -webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		   border-radius: 4px;
+		   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   text-shadow: #7ea4bd 0 1px 0;
+			 
+		   color: #06426c;
+		   font-size: 16px;
+		   font-family: helvetica, serif;
+		   text-decoration: none;
+		   vertical-align: middle;
+			 cursor: pointer;
+		   }
+		.button:hover {
+				margin-left: 10px;
+				border: 1px solid #0a3c59;
+				text-shadow: #1e4158 0 1px 0;
+
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+
+				color: #fff;
+				cursor: pointer;
+				}
+		.button:active {
+			margin-left: 10px;
+		   text-shadow: #1e4158 0 1px 0;
+		   border: 1px solid #0a3c59;
+			 
+		   background: #65a9d7;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+		   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+		   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+			 
+		   color: #fff;
+			 cursor: pointer;
+		   }
+
+		.Welcome{
+			text-align: left;
+			font-weight:bold;
+			font-size:18px;
+			font-family:"Trebuchet MS", Helvetica, sans-serif;
+		}
+			 
+	head
+			title ECS - My Assignments
+	h1 			
+		img(src='culogo.png', alt='ECS Logo', width='115', height='70')
+		b  Electronic Coursework System		
+		.navbar
+			.button(type='submit')
+				a(href="/studenthome") Home
+			.button(type='submit')
+				a(href='/studentmodules') My Modules
+			.button(type='submit')
+				a(href='/studentassign') My Assignments
+			.button(type='submit')
+				a(href='/studentsubs') My Submissions
+			.button(type='submit')
+				a(href='login.pug') Log Out
+				
+	p My Assignments
+	hr
+	body
+		.Welcome
+			b Welcome to the Coventry University Electronic Coursework System. 
+			br 
+			b You are logged in to the Student Homepage.				
+			br
+			br
+		
+		.twitter
+			a(href='https://twitter.com/covcampus') Tweets by Coventry University (@covcampus)
+			script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
+			a(href='https://twitter.com/CoventryUniNews') News Tweets by Coventry University (@CoventryUniNews)
+			script(type='text/javascript' async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
+			br
+			br
+				
+		a(href='https://www.cusu.org') Coventry University Main Site
+		br
+		br
+		a(href='http://www.coventry.ac.uk') Coventry University Students Union

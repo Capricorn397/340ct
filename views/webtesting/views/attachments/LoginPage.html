@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+form{
+	border: 1px solid grey;
+	
+}
+
+input[type=text], input[type=password]{
+	background-color: none;
+	color: black;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid grey;
+	box-sizing: border-box;
+}
+
+
+
+
+button {
+	background-color: grey;
+	font-size: 18px;
+	color: white;
+	padding: 10px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 10%;
+	display: block;
+	margin: 0 auto;
+}
+
+
+.container {
+	padding: 16px;
+}
+
+
+</style>
+<body>
+
+<form action="action_page.php">
+	<div class="container">
+		<label><b>Username:</b><label>
+		<input type="text" placeholder="Enter Username" name="uname" required>
+
+		<label><b>Password:</b><label>
+		<input type="password"placeholder="Enter Password" name="pword" required>
+
+		<button type="submit">Login</button>
+
+	</div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+doctype html
+html
+	style(type='text/css').
+		.tg  {
+			border-collapse:collapse;border-spacing:0;
+			vertical-align: center;
+			text-align: center;
+		}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:4px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:4px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+
+		.tg .tg-q7bu{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		.tg .tg-obv3{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		.tg .tg-2xk3{font-weight:bold;font-size:14px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+
+		.tg .tg-361j{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#efefef}
+		.tg .tg-lmlu{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#9aff99}
+		.tg .tg-l29w{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffccc9}
+		.tg .tg-i81m{font-size:12px;font-family:"Trebuchet MS", Helvetica, sans-serif !important;;background-color:#ffffff}
+		
+		h1{
+			vertical-align: middle;
+			font-family: "Trebuchet MS", serif;
+			text-shadow: #FFFFFF 0 2px 0;
+		}
+		
+		body {
+			background: #efefef;
+			font-family: verdana;
+		}
+		
+		.button {
+				width: 15%;
+				margin-left: 10px;
+				text-align: center;
+				display: inline-block;
+				border: 1px solid #0a3c59;
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+			 
+		   padding: 6px 2px;
+		   -webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		   border-radius: 4px;
+		   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+		   text-shadow: #7ea4bd 0 1px 0;
+			 
+		   color: #06426c;
+		   font-size: 16px;
+		   font-family: helvetica, serif;
+		   text-decoration: none;
+		   vertical-align: middle;
+			 cursor: pointer;
+		   }
+		.button:hover {
+				margin-left: 10px;
+				border: 1px solid #0a3c59;
+				text-shadow: #1e4158 0 1px 0;
+
+				background: #3e779d;
+				background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+				background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+				background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+				background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+				background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+
+				color: #fff;
+				cursor: pointer;
+				}
+		.button:active {
+			margin-left: 10px;
+		   text-shadow: #1e4158 0 1px 0;
+		   border: 1px solid #0a3c59;
+			 
+		   background: #65a9d7;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#3e779d));
+		   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+		   background-image: -ms-linear-gradient(top, #3e779d 0%, #65a9d7 100%);
+			 
+		   color: #fff;
+			 cursor: pointer;
+		   }
+
+		.Welcome{
+			text-align: left;
+			font-weight:bold;
+			font-size:18px;
+			font-family:"Trebuchet MS", Helvetica, sans-serif;
+		}
+			 
+	head
+			title ECS - My Assignments
+	h1 			
+		img(src='culogo.png', alt='ECS Logo', width='115', height='70')
+		b  Electronic Coursework System		
+		.navbar
+			.button(type='submit')
+				a(href="/studenthome") Home
+			.button(type='submit')
+				a(href='/studentmodules') My Modules
+			.button(type='submit')
+				a(href='/studentassign') My Assignments
+			.button(type='submit')
+				a(href='/studentsubs') My Submissions
+			.button(type='submit')
+				a(href='login.pug') Log Out
+				
+	p My Assignments
+	hr
+	body
+		.Welcome
+			b Welcome to the Coventry University Electronic Coursework System. 
+			br 
+			b Your modules are detailed below.				
+			br
+			br
+	table.tg
+		tr
+			th.tg-2xk3 Module Code
+			th.tg-2xk3 Module Name
+			th.tg-2xk3 Module Tutor
+			th.tg-2xk3 Assignments			
+		tr
+			td.tg-361j 340CT
+			td.tg-361j Software and Process Management
+			td.tg-361j
+				a(href="mailto:aa0817@coventry.ac.uk") Dr Yih-Ling Hedley
+			td.tg-361j
+				a(href="stud_assign.pug") View
+		tr
+			td.tg-q7bu 380CT
+			td.tg-q7bu Theoretical Aspects of Computer Science
+			td.tg-q7bu 
+				a(href="mailto:ab3735@coventry.ac.uk") Dr Kamal Bentahar
+			td.tg-q7bu
+				a(href="stud_assign.pug") View
+		tr
+			td.tg-361j 310CT
+			td.tg-361j Intelligent Agents
+			td.tg-361j 
+				a(href="mailto:csx220@coventry.ac.uk") Dr Rachid Anane
+			td.tg-361j 
+				a(href="stud_assign.pug") View
+		tr
+			td.tg-q7bu 303COM
+			td.tg-q7bu Individual Project
+			td.tg-q7bu 
+				a(href="mailto:csx241@coventry.ac.uk") Mr Peter Every
+			td.tg-q7bu No Assigments
+		tr
+			td.tg-361j 370CT
+			td.tg-361j Concurrent and Real-Time Systems Design
+			td.tg-361j 
+				a(href="mailto:csx214@coventry.ac.uk") Dr Norlaily Yaacob
+			td.tg-361j No Assigments
