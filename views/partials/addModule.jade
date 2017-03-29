@@ -8,15 +8,16 @@ block content
 			button.btn.btn-large.btn-primary Submit
 			script(type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
 			script(type="text/javascript").
-				$(document).ready(function() {
-					$('form').submit(function() {
-						event.preventDefault();
-						const name = document.getElementById('modName').value;
-						const desc = document.getElementById('modDesc').value;
-						var pay = {modName: name, modDesc: desc};
-						var async = true;
-						console.log(name)
-						console.log(desc)
+				$(document).ready(function() { //wait for page to be loaded
+					$('form').submit(function() { //submit the form
+						event.preventDefault(); //stop the page from reloading
+						const name = document.getElementById('modName').value; //get the module name value
+						const desc = document.getElementById('modDesc').value; //get the module Description text
+						var pay = {modName: name, modDesc: desc}; //set the data up for the server
+						var async = true; //Set the synchronisity
+						console.log(name) //check name is found
+						console.log(desc) //check Description is found
+						//POST to send data to the server backend sending the name and description as the body
 						$.ajax({
 							type: 'POST',
 							url: '../api/module/add',
@@ -28,6 +29,5 @@ block content
 								console.log('Module added successfully');
 							}
 						})
-						return console.log('EOF');
 					});
 				});
